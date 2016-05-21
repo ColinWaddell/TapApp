@@ -19,7 +19,7 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.weather', {
-    url: '/weather',
+    url: '/weather/:location',
     views: {
       'tab2': {
         templateUrl: 'templates/weather.html',
@@ -44,6 +44,6 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-  $urlRouterProvider.otherwise('/page1/locations')
+  $urlRouterProvider.otherwise('/page1/weather/Glasgow')
 
 });

@@ -1,3 +1,10 @@
 <ion-view title="Locations" id="page2" class=" ">
-    <ion-content padding="true" class="has-header"></ion-content>
+    <ion-content padding="true" class="has-header">
+      <form id="weather-form2" class="list">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" my-enter="searchLocation(location)" ng-model="location" placeholder="Check anywhere in the UK!">
+        </label>
+      </form>
+    </ion-content>
 </ion-view>

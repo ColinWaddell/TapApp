@@ -1,17 +1,49 @@
 <ion-view id="page3" class=" ">
   <ion-nav-title>{{title}}</ion-nav-title>
-    <ion-content padding="true" class="has-header">
-        <h2 class="site-message">{{location}}, the weather is:</h2>
+    <!-- Loading -->
+    <div ng-if="!error && !weather">
+      <ion-content padding="true" class="has-header">
+        LOADING
+      </ion-content>
+    </div>
 
-        <p class="taps-message">taps
-          <span class="dynamic-taps-message" class="">{{!error ? taps : error}}</span>
-        </p>
+    <!-- Weather View -->
+    <div ng-if="!error && weather">
+      <ion-content padding="true" class="has-header">
 
-        <h3 class="sub-message" ng-if="message">{{message}}</h3>
+          <h2 class="site-message">{{weather.location}}, the weather is:</h2>
 
-        <hr />
+          <p class="taps-message">taps
+            <span class="dynamic-taps-message" class="">{{!weather.error ? weather.taps : weather.error}}</span>
+          </p>
 
-        <p><strong>Current Weather: </strong>{{description}}</p>
-        <p><strong>Temperature:</strong> {{temp_c}}&deg;C ({{temp_f}}&deg;F)
-    </ion-content>
+          <h3 class="sub-message" ng-if="weather.message">{{weather.message}}</h3>
+
+          <hr />
+
+          <p><strong>Current Weather: </strong>{{weather.description}}</p>
+          <p><strong>Temperature:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
+
+          <hr />
+
+          <ion-scroll zooming="false" direction="x" style="height: 200px">
+            <div class="row">
+              <div class="col" ng-repeat="(n, day) in weather.forecast">
+                <p><strong>temp_high_c: </strong>{{day.temp_high_c}}</p>
+                <p><strong>taps: </strong>{{day.taps}}</p>
+                <p><strong>description: </strong>{{day.description}}</p>
+              </div>
+            </div>
+           </ion-scroll>
+        </div>
+
+      </ion-content>
+    </div>
+
+    <!-- Error -->
+    <div ng-if="error && !weather">
+      <ion-content padding="true" class="has-header">
+        <p>{{error}}</p>
+      </ion-content>
+    </div>
 </ion-view>
