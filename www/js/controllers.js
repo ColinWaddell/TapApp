@@ -1,8 +1,17 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('locationsCtrl', function($scope, $state, $location, Favorites) {
+.controller('locationsCtrl', function($scope, $state, Favorites) {
   $scope.search_loc = "";
+
+  $scope.$on("$ionicView.enter", function(event, data){
+    Favorites
+      .all()
+      .then(
+        $scope.popluateFavorites,
+        $scope.errorLoadingFavorites
+      );
+  });
 
   $scope.searchLocation = function (search_loc) {
     $state.go('tabsController.weather', {'location': search_loc});
@@ -26,13 +35,6 @@ angular.module('app.controllers', [])
       okText: 'Apology Accepted'
     });
   }
-
-  Favorites
-    .all()
-    .then(
-      $scope.popluateFavorites,
-      $scope.errorLoadingFavorites
-    );
 })
 
 .controller('weatherCtrl',
@@ -107,14 +109,14 @@ angular.module('app.controllers', [])
           .then($scope.favoriteDeleteSuccess, $scope.favoriteDeleteFailure);
       else
         Favorites
-          .addFavorite($scope.location)
+          .add($scope.location)
           .then($scope.favoriteAddSuccess, $scope.favoriteAddFailure);
       ;
     }
 
   /* Attempt to load via a given id parameter */
   $stateParams.id =
-    !Number.isNaN($stateParams.location) ?
+    !isNaN($stateParams.location) ?
       $stateParams.location : null;
 
   if($stateParams.id){
@@ -151,7 +153,7 @@ angular.module('app.controllers', [])
   $scope.delete_confim = false;
 
   $scope.ClearFavorites = function(){
-    Favorites.deleteall();
+    Favorites.deleteAll();
   }
 
 })
