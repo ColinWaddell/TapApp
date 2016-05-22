@@ -35,7 +35,23 @@
               </div>
             </div>
            </ion-scroll>
-        </div>
+
+        <hr />
+
+        <ion-list>
+          <ion-checkbox ng-model="settings.favorite">
+            <i class="icon placeholder-icon"
+               ng-class="settings.favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
+            </i>
+            {{settings.favorite ? 'Saved' : 'Save to favorites'}}
+          </ion-checkbox>
+          <ion-checkbox ng-model="settings.notify" ng-if="settings.favorite">
+            <i class="icon placeholder-icon"
+               ng-class="settings.notify ? 'ion-android-notifications' : 'ion-android-notifications-off'">
+            </i>
+            {{settings.notify ? 'Notifications Enabled' : 'Notifications Disabled'}}
+          </ion-checkbox>
+        </ion-list>
 
       </ion-content>
     </div>
@@ -46,4 +62,6 @@
         <p>{{error}}</p>
       </ion-content>
     </div>
+
+
 </ion-view>

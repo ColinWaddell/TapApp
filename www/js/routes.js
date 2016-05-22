@@ -36,7 +36,30 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.weather', {
-    url: '/weather/:location',
+    url: '/weather',
+    params: {
+        loc: 'Glasgow'
+    },
+    views: {
+      'tab2': {
+        templateUrl: 'templates/weather.html',
+        controller: 'weatherCtrl'
+      }
+    }
+  })
+
+  .state('tabsController.weatherLocation', {
+    url: '/weather/location/:loc',
+    views: {
+      'tab2': {
+        templateUrl: 'templates/weather.html',
+        controller: 'weatherCtrl'
+      }
+    }
+  })
+
+  .state('tabsController.weatherId', {
+    url: '/weather/id/:id',
     views: {
       'tab2': {
         templateUrl: 'templates/weather.html',
@@ -61,6 +84,6 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-  $urlRouterProvider.otherwise('/page1/weather/Glasgow')
+  $urlRouterProvider.otherwise('/page1/weather/location/Glasgow')
 
 });

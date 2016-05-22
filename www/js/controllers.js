@@ -1,8 +1,13 @@
 angular.module('app.controllers', [])
 
 .controller('locationsCtrl', function($scope, $state) {
-  $scope.searchLocation = function (location) {
-    $state.go('tabsController.weather', {'location': location});
+  $scope.search_loc = "";
+  
+  $scope.searchLocation = function (search_loc) {
+    $state.go('tabsController.weather', {'search_loc': search_loc});
+  };
+  $scope.clearSearch = function () {
+    search_loc = "";
   };
 })
 
