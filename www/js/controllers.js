@@ -1,18 +1,22 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('locationsCtrl', function($scope, $state, Favorites) {
+.controller('locationsCtrl', function($scope, $state, $location, Favorites) {
   $scope.search_loc = "";
 
   $scope.searchLocation = function (search_loc) {
-    $state.go('tabsController.weather', {'loc': search_loc});
+    $state.go('tabsController.weather', {'location': search_loc});
   };
   $scope.clearSearch = function () {
     search_loc = "";
   };
 
+  $scope.loadFavoriteById = function(id){
+    $state.go('tabsController.weather', {'location': id});
+  }
+
   $scope.popluateFavorites = function(favorites){
-    console.log(favorites);
+    $scope.favorites = favorites;
   };
 
   $scope.errorLoadingFavorites = function(){
@@ -47,6 +51,7 @@ angular.module('app.controllers', [])
 
     $scope.weatherLoadSuccess = function (res) {
       $scope.weather = res.data;
+      $scope.location = $scope.weather.location;
       $scope.title = "Weather";
     };
 
@@ -56,10 +61,8 @@ angular.module('app.controllers', [])
     };
 
     $scope.favoriteLoadSuccess = function(fav) {
-      $scope.id = fav.id;
-      $scope.notify = fav.notification;
+      angular.extend($scope, fav)
       $scope.favorite = true;
-
       $scope.grabWeatherData($scope.location);
     }
 
@@ -110,31 +113,38 @@ angular.module('app.controllers', [])
     }
 
   /* Attempt to load via a given id parameter */
+  $stateParams.id =
+    !Number.isNaN($stateParams.location) ?
+      $stateParams.location : null;
+
   if($stateParams.id){
     $scope.id = $stateParams.id;
     Favorites
       .getById($scope.id)
       .then(
-        favoriteLoadSuccess,
-        favoriteLoadFailure);
+        $scope.favoriteLoadSuccess,
+        $scope.favoriteLoadFailure);
+  }
+  else if ($stateParams.location){
+    Favorites
+      .getByLocation($stateParams.location)
+      .then(
+        /* This location is in favorites */
+        $scope.favoriteLoadSuccess,
+        /* Default load case if not a favorite */
+        function(){
+          $scope.grabWeatherData($stateParams.location);
+        });
+  }
+  else{
+    $scope.location = 'Glasgow';
+    $scope.grabWeatherData($stateParams.location);
   }
 
   /* THE CODE */
   $scope.title = "Loading " + $scope.location;
   $scope.favorite = false;
   $scope.notify = false
-
-  /* Default to trying to load via a loction parameter */
-  $scope.location = $stateParams.loc || 'Glasgow';
-  Favorites
-    .getByLocation($scope.location)
-    .then(
-      /* This location is in favorites */
-      $scope.favoriteLoadSuccess,
-      /* Default load case if not a favorite */
-      function(){
-        $scope.grabWeatherData($scope.location);
-      });
 })
 
 .controller('settingsCtrl', function($scope, Favorites) {

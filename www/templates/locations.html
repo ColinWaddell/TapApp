@@ -9,6 +9,16 @@
             <i class="icon ion-close-round placeholder-icon"></i>
           </button>
         </div>
+
+        <div class="item item-divider item-icon-right">
+          Favorites
+          <i class="icon placeholder-icon ion-ios-star"></i>
+        </div>
+
+        <div class="item" ng-repeat="fav in favorites">
+          <a ng-click="loadFavoriteById(fav.id)">{{fav.location}}</a>
+        </div>
+
       </div>
     </ion-content>
 </ion-view>
