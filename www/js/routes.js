@@ -17,6 +17,14 @@ angular.module('app.routes', [])
     ]
 })
 
+.constant('TAP_GET',
+  {
+    method: 'GET',
+    //url: 'http://www.taps-aff.co.uk/?api&location='+$stateParams.location
+    url: '/download.json'
+  }
+)
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

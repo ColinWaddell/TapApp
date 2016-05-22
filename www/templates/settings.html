@@ -1,3 +1,33 @@
 <ion-view title="Settings" id="page4" class=" ">
-    <ion-content padding="true" class="has-header"></ion-content>
+    <ion-content padding="true" class="has-header">
+
+      <div class="list">
+
+        <div class="item item-button-right">
+          Clear Favorites
+          <button class="button button-positive" ng-click="delete_confirm = true">
+            <i class="icon ion-trash-b"></i>
+          </button>
+        </div>
+
+        <div class="item" ng-show="delete_confirm">
+          <div class="row">
+            <div class="col">
+              <button ng-click="ClearFavorites()" class="button button-block button-positive">
+                Confirm
+              </button>
+            </div>
+            <div class="col">
+              <button
+                class="button button-block button-assertive"
+                ng-click="delete_confirm = false">
+                  Cancel
+              </button>
+            </div>
+          </div>
+      </div>
+
+
+
+    </ion-content>
 </ion-view>
