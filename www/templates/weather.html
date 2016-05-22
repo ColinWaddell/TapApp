@@ -39,17 +39,17 @@
         <hr />
 
         <ion-list>
-          <ion-checkbox ng-model="settings.favorite">
+          <ion-checkbox ng-change="toggleFavorite()" ng-model="favorite">
             <i class="icon placeholder-icon"
-               ng-class="settings.favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
+               ng-class="favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
             </i>
             {{settings.favorite ? 'Saved' : 'Save to favorites'}}
           </ion-checkbox>
-          <ion-checkbox ng-model="settings.notify" ng-if="settings.favorite">
+          <ion-checkbox on-click="addFavorite()" ng-if="favorite">
             <i class="icon placeholder-icon"
                ng-class="settings.notify ? 'ion-android-notifications' : 'ion-android-notifications-off'">
             </i>
-            {{settings.notify ? 'Notifications Enabled' : 'Notifications Disabled'}}
+            {{notify ? 'Notifications Enabled' : 'Notifications Disabled'}}
           </ion-checkbox>
         </ion-list>
 

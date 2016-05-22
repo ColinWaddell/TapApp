@@ -52,28 +52,41 @@ angular.module('app.services', [])
 
     return self;
 })
-// Resource service example
-.factory('Document', function(DB) {
+
+.factory('Favorites', function(DB) {
     var self = this;
 
     self.all = function() {
-        return DB.query('SELECT * FROM locations')
+        return DB.query('SELECT * FROM favorites')
         .then(function(result){
             return DB.fetchAll(result);
         });
     };
 
     self.getById = function(id) {
-        return DB.query('SELECT * FROM locations WHERE id = ?', [id])
+        return DB.query('SELECT * FROM favorites WHERE id = ?', [id])
         .then(function(result){
             return DB.fetch(result);
         });
     };
 
-    self.addProject = function(name, company, description, latitude, longitude) {
+    self.addFavorite = function(location) {
       return DB.query(
-        'INSERT INTO locations (name, company, description, latitude, longitude) VALUES (?,?,?,?,?)',
-        [name, company, description, latitude, longitude]);
+        'INSERT INTO favorites (location, notifications) VALUES (?,?)',
+        [location, 0])
+      .then(function(result){
+        return result.insertId;
+      });
+    }
+
+    self.deleteFavorite = function (id){
+      return DB.query(
+        'DELETE FROM favorites WHERE id = ?', [id]);
+    }
+
+    self.deleteAllFavorites = function () {
+      return DB.query(
+        'DELETE FROM favorites');
     }
 
     return self;

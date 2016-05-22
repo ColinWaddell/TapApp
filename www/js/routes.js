@@ -4,14 +4,11 @@ angular.module('app.routes', [])
     name: 'DB',
     tables: [
       {
-        name: 'locations',
+        name: 'favorites',
         columns: [
           {name: 'id', type: 'integer primary key'},
-          {name: 'name', type: 'text'},
-          {name: 'company', type: 'text'},
-          {name: 'description', type: 'text'},
-          {name: 'latitude', type: 'real'},
-          {name: 'longitude', type: 'real'}
+          {name: 'location', type: 'text'},
+          {name: 'notifications', type: 'integer'}
         ]
       }
     ]
