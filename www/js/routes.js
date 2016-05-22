@@ -14,11 +14,10 @@ angular.module('app.routes', [])
     ]
 })
 
-.constant('TAP_GET',
-  {
-    method: 'GET',
-    //url: 'http://www.taps-aff.co.uk/?api&location='+$stateParams.location
-    url: '/download.json'
+.constant(
+  'TAP_SERVER', {
+    url: 'http://www.taps-aff.co.uk/?api&location='
+    // url: '/download.json?'
   }
 )
 

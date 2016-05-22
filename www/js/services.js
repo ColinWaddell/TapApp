@@ -70,7 +70,14 @@ angular.module('app.services', [])
         });
     };
 
-    self.addFavorite = function(location) {
+    self.getByLocation = function(location) {
+        return DB.query('SELECT * FROM favorites WHERE location = ?', [location])
+        .then(function(result){
+            return DB.fetch(result);
+        });
+    };
+
+    self.add = function(location) {
       return DB.query(
         'INSERT INTO favorites (location, notifications) VALUES (?,?)',
         [location, 0])
@@ -79,12 +86,12 @@ angular.module('app.services', [])
       });
     }
 
-    self.deleteFavorite = function (id){
+    self.delete = function (id){
       return DB.query(
         'DELETE FROM favorites WHERE id = ?', [id]);
     }
 
-    self.deleteAllFavorites = function () {
+    self.deleteAll= function () {
       return DB.query(
         'DELETE FROM favorites');
     }
