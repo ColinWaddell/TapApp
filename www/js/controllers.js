@@ -6,13 +6,13 @@ angular.module('app.controllers', [])
   };
 })
 
-.controller('weatherCtrl', function($scope, $stateParams, $http) {
+.controller('weatherCtrl', function($scope, $stateParams, $http, Document) {
   $scope.title = "Loading " + $stateParams.location;
-console.log($stateParams.location);
+
   $http({
     method: 'GET',
-    url: 'http://www.taps-aff.co.uk/?api&location='+$stateParams.location
-    //url: '/download.json'
+    //url: 'http://www.taps-aff.co.uk/?api&location='+$stateParams.location
+    url: '/download.json'
   })
   .then(function successCallback(res) {
     $scope.weather = res.data;
@@ -23,8 +23,29 @@ console.log($stateParams.location);
     $scope.title = "Error";
   });
 
+  $scope.documents = [];
+  $scope.document = null;
+  Document.addProject('nnnname', 'ccccompany', 'dddddescription', 0.0, 1.1);
+  // Get all the documents
+  Document.all().then(function(documents){
+      $scope.documents = documents;
+  });
+
 })
 
 .controller('settingsCtrl', function($scope) {
 
+})
+
+.controller('DocumentCtrl', function($scope, Document) {
+    $scope.documents = [];
+    $scope.document = null;
+    // Get all the documents
+    Document.all().then(function(documents){
+        $scope.documents = documents;
+    });
+    // Get one document, example with id = 2
+    Document.getById(2).then(function(document) {
+        $scope.document = document;
+    });
 })

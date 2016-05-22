@@ -1,5 +1,22 @@
 angular.module('app.routes', [])
 
+.constant('DB_CONFIG', {
+    name: 'DB',
+    tables: [
+      {
+        name: 'locations',
+        columns: [
+          {name: 'id', type: 'integer primary key'},
+          {name: 'name', type: 'text'},
+          {name: 'company', type: 'text'},
+          {name: 'description', type: 'text'},
+          {name: 'latitude', type: 'real'},
+          {name: 'longitude', type: 'real'}
+        ]
+      }
+    ]
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
