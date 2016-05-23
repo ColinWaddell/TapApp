@@ -22,31 +22,42 @@
           <hr />
 
           <p><strong>Current Weather: </strong>{{weather.description}}</p>
-          <p><strong>Temperature:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
+          <p><strong>Feels like:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
 
           <hr />
 
           <ion-scroll zooming="false" direction="x">
-            <div class="row">
-              <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7">
-                <div class="row">
-                  <div class="col col-75">
-                    <h4 class="w_day">
-                      {{$first ? 'Today' :
-                        day.datetime | date:'EEEE'}}
-                    </h4>
-                    <img class="w_clothing"
-                      ng-src="{{
-                        weather.taps==='aff' ? '/img/symbols/tapsaff.svg' :
-                        weatherToClothingSVG(weather.description)
-                      }}"></img>
+            <div ng-style="{'width' : forecastWidth}">
+              <div class="row">
+                <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7">
+                  <div class="card">
+                    <div class="item item-divider">
+                      <h4 class="w_day">
+                        {{$first ? 'Today' :
+                          day.datetime | date:'EEEE'}}
+                      </h4>
+                    </div>
+                    <div class="item item-text-wrap">
+                      <div class="row">
+                        <div class="col col-67">
+
+                          <img class="w_clothing"
+                            ng-src="{{
+                              weather.taps==='aff' ? '/img/symbols/tapsaff.svg' :
+                              weatherToClothingSVG(weather.description)
+                            }}"></img>
+                        </div>
+                        <div class="col col-33">
+                          <p class="w_temp w_temp_high w_temp_padding">{{day.temp_high_c}}</p>
+                          <p class="w_temp w_temp_low">{{day.temp_low_c}}</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="item item-divider">
                       <h4 class="w_description">{{weather.description}}</h4>
+                    </div>
                   </div>
-                  <div class="col col-25">
-                    <p class="w_temp w_temp_high w_temp_padding">{{day.temp_high_c}}</p>
-                    <p class="w_temp w_temp_low">{{day.temp_low_c}}</p>
-                  </div>
-              </div>
+                </div>
               </div>
             </div>
            </ion-scroll>

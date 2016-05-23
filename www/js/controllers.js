@@ -38,7 +38,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('weatherCtrl',
-  function($scope, $stateParams, $http, $ionicPopup, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
+  function($scope, $stateParams, $http, $window, $ionicPopup, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.grabWeatherData = function(location) {
       $http(
@@ -116,9 +116,9 @@ angular.module('app.controllers', [])
 
     $scope.weatherToClothingSVG = function(weather){
       if(WEATHER_CLOTHING.hasOwnProperty(weather)){
-        return '/img/symbols/' + WEATHER_CLOTHING[weather] + ".svg";
+        return 'img/symbols/' + WEATHER_CLOTHING[weather] + ".svg";
       }else{
-        return '/img/symbols/jacket.svg';
+        return 'img/symbols/jacket.svg';
       }
     }
 
@@ -154,7 +154,8 @@ angular.module('app.controllers', [])
     /* THE CODE */
     $scope.title = "Loading " + $scope.location;
     $scope.favorite = false;
-    $scope.notify = false
+    $scope.notify = false;
+    $scope.forecastWidth =  (4*$window.innerWidth) + 'px';
   })
 
   .controller('settingsCtrl', function($scope, Favorites) {
