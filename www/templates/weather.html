@@ -31,7 +31,10 @@
               <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7">
                 <div class="row">
                   <div class="col col-75">
-                    <h4 class="w_day">{{day.datetime | date:'EEEE'}}</h4>
+                    <h4 class="w_day">
+                      {{$first ? 'Today' :
+                        day.datetime | date:'EEEE'}}
+                    </h4>
                     <img class="w_clothing"
                       ng-src="{{
                         weather.taps==='aff' ? '/img/symbols/tapsaff.svg' :
