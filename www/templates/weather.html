@@ -11,30 +11,31 @@
     <div ng-if="!error && weather">
       <ion-content padding="true" class="has-header">
 
-          <h2 class="site-message">{{weather.location}}, the weather is:</h2>
+          <div class="card">
+            <div class="item item-divider" >
+              <h2 class="taps-title">{{weather.location}}, the weather is</h2>
+            </div>
+            <div class="item item-text-wrap">
+              <p class="taps-message">taps
+                <span ng-class="weather.taps==='aff'?'taps-aff':'taps-oan'">{{!weather.error ? weather.taps : weather.error}}</span>
+                <h3 class="taps-submessage" ng-if="weather.message">{{weather.message}}</h3>
+              </p>
+            </div>
+            <div class="item item-divider">
+              <p><strong>Current Weather: </strong>{{weather.description}}</p>
+              <p><strong>Feels like:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
+            </div>
+          </div>
 
-          <p class="taps-message">taps
-            <span class="dynamic-taps-message" class="">{{!weather.error ? weather.taps : weather.error}}</span>
-          </p>
-
-          <h3 class="sub-message" ng-if="weather.message">{{weather.message}}</h3>
-
-          <hr />
-
-          <p><strong>Current Weather: </strong>{{weather.description}}</p>
-          <p><strong>Feels like:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
-
-          <hr />
-
+        <div class="taps-forecase">
           <ion-scroll zooming="false" direction="x">
             <div ng-style="{'width' : forecastWidth}">
               <div class="row">
-                <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7">
+                <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
                   <div class="card">
                     <div class="item item-divider">
                       <h4 class="w_day">
-                        {{$first ? 'Today' :
-                          day.datetime | date:'EEEE'}}
+                        {{day.datetime | date:'EEEE'}}
                       </h4>
                     </div>
                     <div class="item item-text-wrap">
@@ -43,7 +44,7 @@
 
                           <img class="w_clothing"
                             ng-src="{{
-                              weather.taps==='aff' ? '/img/symbols/tapsaff.svg' :
+                              day.taps==='aff' ? 'img/symbols/tapsaff.svg' :
                               weatherToClothingSVG(weather.description)
                             }}"></img>
                         </div>
@@ -54,15 +55,17 @@
                     </div>
                     </div>
                     <div class="item item-divider">
-                      <h4 class="w_description">{{weather.description}}</h4>
+                      <h4 class="w_description">{{
+                        day.taps==='aff' ? 'Taps Aff!' :
+                        weather.description
+                      }}</h4>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
            </ion-scroll>
-
-        <hr />
+        </div>
 
         <ion-list>
           <ion-checkbox ng-change="toggleFavorite()" ng-model="favorite">
