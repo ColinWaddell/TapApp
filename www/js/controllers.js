@@ -38,7 +38,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('weatherCtrl',
-  function($scope, $stateParams, $http, $ionicPopup, Favorites, TAP_SERVER) {
+  function($scope, $stateParams, $http, $ionicPopup, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.grabWeatherData = function(location) {
       $http(
@@ -114,45 +114,53 @@ angular.module('app.controllers', [])
       ;
     }
 
-  /* Attempt to load via a given id parameter */
-  $stateParams.id =
-    !isNaN($stateParams.location) ?
-      $stateParams.location : null;
+    $scope.weatherToClothingSVG = function(weather){
+      if(WEATHER_CLOTHING.hasOwnProperty(weather)){
+        return '/img/symbols/' + WEATHER_CLOTHING[weather] + ".svg";
+      }else{
+        return '/img/symbols/jacket.svg';
+      }
+    }
 
-  if($stateParams.id){
-    $scope.id = $stateParams.id;
-    Favorites
-      .getById($scope.id)
-      .then(
-        $scope.favoriteLoadSuccess,
-        $scope.favoriteLoadFailure);
-  }
-  else if ($stateParams.location){
-    Favorites
-      .getByLocation($stateParams.location)
-      .then(
-        /* This location is in favorites */
-        $scope.favoriteLoadSuccess,
-        /* Default load case if not a favorite */
-        function(){
-          $scope.grabWeatherData($stateParams.location);
-        });
-  }
-  else{
-    $scope.location = 'Glasgow';
-    $scope.grabWeatherData($stateParams.location);
-  }
+    /* Attempt to load via a given id parameter */
+    $stateParams.id =
+      !isNaN($stateParams.location) ?
+        $stateParams.location : null;
 
-  /* THE CODE */
-  $scope.title = "Loading " + $scope.location;
-  $scope.favorite = false;
-  $scope.notify = false
-})
+    if($stateParams.id){
+      $scope.id = $stateParams.id;
+      Favorites
+        .getById($scope.id)
+        .then(
+          $scope.favoriteLoadSuccess,
+          $scope.favoriteLoadFailure);
+    }
+    else if ($stateParams.location){
+      Favorites
+        .getByLocation($stateParams.location)
+        .then(
+          /* This location is in favorites */
+          $scope.favoriteLoadSuccess,
+          /* Default load case if not a favorite */
+          function(){
+            $scope.grabWeatherData($stateParams.location);
+          });
+    }
+    else{
+      $scope.location = 'Glasgow';
+      $scope.grabWeatherData($stateParams.location);
+    }
 
-.controller('settingsCtrl', function($scope, Favorites) {
-  $scope.delete_confim = false;
+    /* THE CODE */
+    $scope.title = "Loading " + $scope.location;
+    $scope.favorite = false;
+    $scope.notify = false
+  })
 
-  $scope.ClearFavorites = function(){
+  .controller('settingsCtrl', function($scope, Favorites) {
+    $scope.delete_confim = false;
+
+    $scope.ClearFavorites = function(){
     Favorites.deleteAll();
   }
 

@@ -14,6 +14,23 @@ angular.module('app.routes', [])
     ]
 })
 
+.constant('WEATHER_CLOTHING', {
+  "Mental": "jacket",
+  "Radge": "jacket",
+  "Boggin'": "jacket",
+  "Dreich": "jacket",
+  "Pish": "hoodie",
+  "Baltic": "jacket",
+  "Boggin'": "jacket",
+  "Stoory": "hoodie",
+  "Misty": "jacket",
+  "Blowy": "jacket",
+  "Awright": "tshirt",
+  "Braw": "tshirt",
+  "Sweltrin'": "tshirt",
+  "Hackit": "jacket"
+})
+
 .constant(
   'TAP_SERVER', {
     url: 'http://www.taps-aff.co.uk/?api&location='

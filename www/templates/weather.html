@@ -26,12 +26,24 @@
 
           <hr />
 
-          <ion-scroll zooming="false" direction="x" style="height: 200px">
+          <ion-scroll zooming="false" direction="x">
             <div class="row">
-              <div class="col" ng-repeat="(n, day) in weather.forecast">
-                <p><strong>temp_high_c: </strong>{{day.temp_high_c}}</p>
-                <p><strong>taps: </strong>{{day.taps}}</p>
-                <p><strong>description: </strong>{{day.description}}</p>
+              <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7">
+                <div class="row">
+                  <div class="col col-75">
+                    <h4 class="w_day">{{day.datetime | date:'EEEE'}}</h4>
+                    <img class="w_clothing"
+                      ng-src="{{
+                        weather.taps==='aff' ? '/img/symbols/tapsaff.svg' :
+                        weatherToClothingSVG(weather.description)
+                      }}"></img>
+                      <h4 class="w_description">{{weather.description}}</h4>
+                  </div>
+                  <div class="col col-25">
+                    <p class="w_temp w_temp_high w_temp_padding">{{day.temp_high_c}}</p>
+                    <p class="w_temp w_temp_low">{{day.temp_low_c}}</p>
+                  </div>
+              </div>
               </div>
             </div>
            </ion-scroll>
