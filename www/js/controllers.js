@@ -15,7 +15,8 @@ angular.module('app.controllers', [])
   });
 
   $scope.searchFilter = function(search_loc){
-    $scope.search_suggestions = Placenames.getNames(search_loc);
+    ss = Placenames.getNames(search_loc);
+    $scope.search_suggestions = ss;
   }
 
   $scope.searchLocation = function (search_loc) {
@@ -23,6 +24,7 @@ angular.module('app.controllers', [])
   };
   $scope.clearSearch = function () {
     search_loc = "";
+    $scope.search_suggestions = [];
   };
 
   $scope.loadFavoriteById = function(id){

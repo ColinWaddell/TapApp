@@ -117,8 +117,9 @@ angular.module('app.services', [])
       if (name.length < 3) return [];
 
       id = name.substring(0,3).toLowerCase();
+      if(!PLACENAMES.hasOwnProperty(id)) return [];
 
-      places = self.placenames[id].filter(
+      places = PLACENAMES[id].filter(
         function(placename){
           return placename
                    .toLowerCase()
