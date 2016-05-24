@@ -1,5 +1,4 @@
-<ion-view id="page3" class=" ">
-  <ion-nav-title>{{title}}</ion-nav-title>
+<ion-view id="page3" class=" " hide-nav-bar="true">
     <!-- Loading -->
     <div ng-if="!error && !weather">
       <ion-content padding="true" class="has-header">
@@ -12,6 +11,9 @@
       <ion-content padding="true" class="has-header">
 
           <div class="card">
+            <div class="item item-divider" >
+              <h2 class="taps-title">{{weather.location}}, the weather is</h2>
+            </div>
             <div class="item item-text-wrap">
               <p class="taps-message">taps
                 <span ng-class="weather.taps==='aff'?'taps-aff':'taps-oan'">{{!weather.error ? weather.taps : weather.error}}</span>
@@ -45,7 +47,7 @@
                                     ng-click="forecastToggleIcon(toggled)"
                                     ng-src="{{
                                       day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
-                                      weatherToClothingSVG(weather.description)
+                                      weatherToClothingSVG(weather.code)
                                     }}"></img>
                                 </div>
                                 <div ng-hide="!toggled">

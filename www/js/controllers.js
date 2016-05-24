@@ -15,9 +15,9 @@ angular.module('app.controllers', [])
     }
   }
 
-  $scope.weatherToClothingSVG = function(weather){
-    if(WEATHER_CLOTHING.hasOwnProperty(weather)){
-      return 'img/symbols/clothing/' + WEATHER_CLOTHING[weather] + ".svg";
+  $scope.weatherToClothingSVG = function(code){
+    if(WEATHER_CLOTHING.length < code && code > -1){
+      return 'img/symbols/clothing/' + WEATHER_CLOTHING[code] + ".svg";
     }else{
       return 'img/symbols/clothing/jacket.svg';
     }

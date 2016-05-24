@@ -1,21 +1,55 @@
 angular.module('app.weatherIcons', [])
 
-.constant('WEATHER_CLOTHING', {
-  "Mental": "jacket",
-  "Radge": "jacket",
-  "Boggin'": "jacket",
-  "Dreich": "jacket",
-  "Pish": "hoodie",
-  "Baltic": "jacket",
-  "Boggin'": "jacket",
-  "Stoory": "hoodie",
-  "Misty": "jacket",
-  "Blowy": "jacket",
-  "Awright": "tshirt",
-  "Braw": "tshirt",
-  "Sweltrin'": "tshirt",
-  "Hackit": "jacket"
-})
+.constant('WEATHER_CLOTHING', [
+  "jacket", // 00 - tornado
+  "jacket", // 01 - tropical storm
+  "jacket", // 02 - hurricane
+  "jacket", // 03 - severe thunderstorms
+  "jacket", // 04 - thunderstorms
+  "jacket", // 05 - mixed jacket and snow
+  "jacket", // 06 - mixed jacket and sleet
+  "jacket", // 07 - mixed snow and sleet
+  "jacket", // 08 - freezing jacket
+  "jacket", // 09 - jacket
+  "jacket", // 10 - freezing jacket
+  "jacket", // 11 - jacket
+  "jacket", // 12 - jacket
+  "jacket", // 13 - snow flurries
+  "jacket", // 14 - light snow jacket
+  "jacket", // 15 - blowing snow
+  "jacket", // 16 - snow
+  "jacket", // 17 - hail
+  "jacket", // 18 - sleet
+  "jacket", // 19 - dust
+  "hoodie", // 20 - hoodiegy
+  "hoodie", // 21 - haze
+  "hoodie", // 22 - smoky
+  "jacket", // 23 - blustery
+  "jacket", // 24 - jacket
+  "jacket", // 25 - cold
+  "hoodie", // 26 - cloudy
+  "hoodie", // 27 - mostly cloudy (night)
+  "hoodie", // 28 - mostly cloudy (day)
+  "hoodie", // 29 - partly cloudy (night)
+  "hoodie", // 30 - partly cloudy (day)
+  "hoodie", // 31 - clear (night)
+  "tshirt", // 32 - sunny
+  "tshirt", // 33 - fair (night)
+  "tshirt", // 34 - fair (day)
+  "jacket", // 35 - mixed jacket and hail
+  "tshirt", // 36 - hot
+  "jacket", // 37 - isolated thunderstorms
+  "jacket", // 38 - scattered thunderstorms
+  "jacket", // 39 - scattered jacket
+  "jacket", // 40 - scattered jacket
+  "jacket", // 41 - heavy snow
+  "jacket", // 42 - scattered snow jacket
+  "jacket", // 43 - heavy snow
+  "hoodie", // 44 - partly cloudy
+  "jacket", // 45 - thunderjacket
+  "jacket", // 46 - snow jacket
+  "jacket"  // 47 - isolated thunderjacket
+])
 
 .constant('WEATHER_ICON', [
   "wind_lightning", // 00 - tornado
