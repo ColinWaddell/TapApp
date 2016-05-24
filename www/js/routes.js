@@ -34,8 +34,8 @@ angular.module('app.routes', [])
 .constant(
   'TAP_SERVER', {
     // url: 'http://www.taps-aff.co.uk/?api&location='
-    // url: '/download.json?'
-    url: '/place_error.json?'
+    url: '/download.json?'
+    // url: '/place_error.json?'
   }
 )
 

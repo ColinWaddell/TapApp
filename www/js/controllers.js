@@ -1,6 +1,15 @@
 /*global angular */
 angular.module('app.controllers', [])
 
+.controller('forecastIcon', function($scope){
+
+  $scope.forecastToggleIcon = function(status){
+    $scope.toggled = !status;
+  }
+
+  $scope.toggled = false;
+})
+
 .controller('locationsCtrl', function($scope, $state, Favorites, Placenames) {
   $scope.search_loc = "";
   $scope.search_suggestions = [];
@@ -133,9 +142,9 @@ angular.module('app.controllers', [])
 
     $scope.weatherToClothingSVG = function(weather){
       if(WEATHER_CLOTHING.hasOwnProperty(weather)){
-        return 'img/symbols/' + WEATHER_CLOTHING[weather] + ".svg";
+        return 'img/symbols/clothing/' + WEATHER_CLOTHING[weather] + ".svg";
       }else{
-        return 'img/symbols/jacket.svg';
+        return 'img/symbols/clothing/jacket.svg';
       }
     }
 

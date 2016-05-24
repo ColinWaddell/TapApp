@@ -41,12 +41,23 @@
                     <div class="item item-text-wrap">
                       <div class="row">
                         <div class="col col-67">
-
-                          <img class="w_clothing"
-                            ng-src="{{
-                              day.taps==='aff' ? 'img/symbols/tapsaff.svg' :
-                              weatherToClothingSVG(weather.description)
-                            }}"></img>
+                          <div ng-controller="forecastIcon">
+                            <div ng-switch="!toggled">
+                                <div ng-switch-when=true>
+                                  <img class="w_clothing"
+                                    ng-click="forecastToggleIcon(toggled)"
+                                    ng-src="{{
+                                      day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
+                                      weatherToClothingSVG(weather.description)
+                                    }}"></img>
+                                </div>
+                                <div ng-switch-when=false>
+                                  <img class="w_clothing"
+                                    ng-click="forecastToggleIcon(toggled)"
+                                    src="img/symbols/clothing/tapsaff.svg"></img>
+                                </div>
+                            </div>
+                          </div>
                         </div>
                         <div class="col col-33">
                           <p class="w_temp w_temp_high w_temp_padding">{{day.temp_high_c}}</p>
