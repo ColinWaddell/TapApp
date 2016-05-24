@@ -12,7 +12,8 @@ angular.module('app', [
   'app.routes',
   'app.services',
   'app.directives',
-  'app.placenames'
+  'app.placenames',
+  'app.weatherIcons'
 ])
 
 .run(function($ionicPlatform) {

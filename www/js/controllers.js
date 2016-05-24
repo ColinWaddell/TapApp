@@ -1,10 +1,26 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('forecastIcon', function($scope){
+.controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON){
 
   $scope.forecastToggleIcon = function(status){
     $scope.toggled = !status;
+  }
+
+  $scope.weatherToIconSVG = function(code){
+    if(WEATHER_ICON.length < code && code > -1){
+      return 'img/symbols/weather/' + WEATHER_ICON[code] + ".svg";
+    }else{
+      return 'img/symbols/weather/cloud.svg';
+    }
+  }
+
+  $scope.weatherToClothingSVG = function(weather){
+    if(WEATHER_CLOTHING.hasOwnProperty(weather)){
+      return 'img/symbols/clothing/' + WEATHER_CLOTHING[weather] + ".svg";
+    }else{
+      return 'img/symbols/clothing/jacket.svg';
+    }
   }
 
   $scope.toggled = false;
@@ -138,14 +154,6 @@ angular.module('app.controllers', [])
           .add($scope.location)
           .then($scope.favoriteAddSuccess, $scope.favoriteAddFailure);
       ;
-    }
-
-    $scope.weatherToClothingSVG = function(weather){
-      if(WEATHER_CLOTHING.hasOwnProperty(weather)){
-        return 'img/symbols/clothing/' + WEATHER_CLOTHING[weather] + ".svg";
-      }else{
-        return 'img/symbols/clothing/jacket.svg';
-      }
     }
 
     /* Attempt to load via a given id parameter */
