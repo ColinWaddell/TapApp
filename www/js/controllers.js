@@ -46,7 +46,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('weatherCtrl',
-  function($scope, $stateParams, $http, $window, $ionicPopup, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
+  function($scope, $stateParams, $http, $window, $ionicPopup, ionicToast, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.grabWeatherData = function(location) {
       $http(
@@ -60,6 +60,15 @@ angular.module('app.controllers', [])
     }
 
     $scope.weatherLoadSuccess = function (res) {
+
+      if(res.data.taps==="error"){
+        if(res.data.place_error.length){
+          ionicToast.show(
+            'Can\'t find ' + res.data.place_error, 'middle', false, 1500
+          );
+        }
+      }
+
       $scope.weather = res.data;
       $scope.location = $scope.weather.location;
       $scope.title = "Weather";
