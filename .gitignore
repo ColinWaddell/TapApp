@@ -10,4 +10,4 @@ plugins/
 *.DS_Store
 *.log
 *.swp
-download.json
+/www/*.json
