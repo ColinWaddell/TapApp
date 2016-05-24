@@ -74,6 +74,7 @@ angular.module('app.controllers', [])
   function($scope, $stateParams, $http, $window, $ionicPopup, ionicToast, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.grabWeatherData = function(location) {
+      $scope.title = $scope.location + "... Loading";
       $http(
         {
           method: 'GET',
@@ -96,7 +97,7 @@ angular.module('app.controllers', [])
 
       $scope.weather = res.data;
       $scope.location = $scope.weather.location;
-      $scope.title = "Weather";
+      $scope.title = $scope.location + ", the weather is:";
     };
 
     $scope.weatherLoadError = function weatherLoadError(res) {
@@ -181,12 +182,10 @@ angular.module('app.controllers', [])
           });
     }
     else{
-      $scope.location = 'Glasgow';
       $scope.grabWeatherData($stateParams.location);
     }
 
     /* THE CODE */
-    $scope.title = "Loading " + $scope.location;
     $scope.favorite = false;
     $scope.notify = false;
     $scope.forecastWidth =  (4*$window.innerWidth) + 'px';
