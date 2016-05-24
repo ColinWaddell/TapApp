@@ -189,7 +189,7 @@ angular.module('app.controllers', [])
     $scope.title = "Loading " + $scope.location;
     $scope.favorite = false;
     $scope.notify = false;
-    $scope.forecastWidth =  (1*$window.innerWidth) + 'px';
+    $scope.forecastWidth =  (4*$window.innerWidth) + 'px';
   })
 
   .controller('settingsCtrl', function($scope, Favorites) {

@@ -46,9 +46,9 @@ angular.module('app.weatherIcons', [])
   "temp_low", // 25 - cold
   "cloud", // 26 - cloudy
   "cloud_night", // 27 - mostly cloudy (night)
-  "cloud", // 28 - mostly cloudy (day)
+  "cloud_sun", // 28 - mostly cloudy (day)
   "cloud_night", // 29 - partly cloudy (night)
-  "cloud", // 30 - partly cloudy (day)
+  "cloud_sun", // 30 - partly cloudy (day)
   "clear_night", // 31 - clear (night)
   "sun_clear", // 32 - sunny
   "clear_night", // 33 - fair (night)

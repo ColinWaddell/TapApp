@@ -42,8 +42,8 @@
                       <div class="row">
                         <div class="col col-67">
                           <div ng-controller="forecastIcon">
-                            <div ng-switch="!toggled">
-                                <div ng-switch-when=true>
+                            <div ng-switch="">
+                                <div ng-hide="toggled">
                                   <img class="w_clothing"
                                     ng-click="forecastToggleIcon(toggled)"
                                     ng-src="{{
@@ -51,7 +51,7 @@
                                       weatherToClothingSVG(weather.description)
                                     }}"></img>
                                 </div>
-                                <div ng-switch-when=false>
+                                <div ng-hide="!toggled">
                                   <img class="w_clothing"
                                     ng-click="forecastToggleIcon(toggled)"
                                     ng-src="{{weatherToIconSVG(weather.code)}}"></img>
