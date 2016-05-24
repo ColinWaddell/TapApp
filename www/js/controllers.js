@@ -1,8 +1,9 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('locationsCtrl', function($scope, $state, Favorites) {
+.controller('locationsCtrl', function($scope, $state, Favorites, Placenames) {
   $scope.search_loc = "";
+  $scope.search_suggestions = [];
 
   $scope.$on("$ionicView.enter", function(event, data){
     Favorites
@@ -12,6 +13,10 @@ angular.module('app.controllers', [])
         $scope.errorLoadingFavorites
       );
   });
+
+  $scope.searchFilter = function(search_loc){
+    $scope.search_suggestions = Placenames.getNames(search_loc);
+  }
 
   $scope.searchLocation = function (search_loc) {
     $state.go('tabsController.weather', {'location': search_loc});
@@ -35,6 +40,7 @@ angular.module('app.controllers', [])
       okText: 'Apology Accepted'
     });
   }
+
 })
 
 .controller('weatherCtrl',
@@ -155,7 +161,7 @@ angular.module('app.controllers', [])
     $scope.title = "Loading " + $scope.location;
     $scope.favorite = false;
     $scope.notify = false;
-    $scope.forecastWidth =  (4*$window.innerWidth) + 'px';
+    $scope.forecastWidth =  (1*$window.innerWidth) + 'px';
   })
 
   .controller('settingsCtrl', function($scope, Favorites) {

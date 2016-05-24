@@ -99,6 +99,41 @@ angular.module('app.services', [])
     return self;
 })
 
+.factory('Placenames', function(PLACENAMES) {
+    var self = this;
+    self.placenames = {};
+
+    self.loadPlaceNames = function(){
+      for(i=0; i<PLACENAMES.length; i++){
+        id = PLACENAMES[i].substring(0,3).toLowerCase();
+        if(self.placenames.hasOwnProperty(id))
+          self.placenames[id].push(PLACENAMES[i]);
+        else
+          self.placenames[id] = [PLACENAMES[i]];
+      }
+    };
+
+    self.getNames = function(name){
+      if (name.length < 3) return [];
+
+      id = name.substring(0,3).toLowerCase();
+
+      places = self.placenames[id].filter(
+        function(placename){
+          return placename
+                   .toLowerCase()
+                   .search(name.toLowerCase()) !== -1 ? placename : null;
+        }
+      );
+
+      return places;
+    }
+
+    self.loadPlaceNames();
+    return self;
+})
+
+
 .factory('BlankFactory', [function(){
 
 }])
