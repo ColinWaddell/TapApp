@@ -3,7 +3,12 @@
       <div class="list">
         <div class="item item-input-inset">
           <label class="item-input-wrapper">
-            <input type="search" my-enter="searchLocation(search_loc)" ng-model="search_loc" placeholder="Check anywhere in the UK!">
+            <input
+              type="search"
+              my-enter="searchLocation(search_loc)"
+              ng-model="search_loc"
+              ng-change="searchFilter(search_loc)"
+              placeholder="Check anywhere in the UK!">
           </label>
           <button class="button button-small" ng-click="search_loc = null">
             <i class="icon ion-close-round placeholder-icon"></i>
@@ -15,7 +20,13 @@
           <i class="icon placeholder-icon ion-ios-star"></i>
         </div>
 
-        <div class="item" ng-repeat="fav in favorites">
+        <div class="search-suggestions" ng-if="search_suggestions">
+          <div class="item" ng-repeat="suggestion in search_suggestions">
+            <p ng-click="searchLocation(suggestion)">{{suggestion}}</p>
+          </div>
+        </div>
+
+        <div class="item" ng-repeat="fav in favorites track by fav.id">
           <p ng-click="loadFavoriteById(fav.id)">{{fav.location}}</p>
         </div>
 
