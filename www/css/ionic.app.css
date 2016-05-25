@@ -9732,16 +9732,18 @@ a.button {
   transition-duration: 0s; }
 
 h2.taps-title {
-  text-align: center;
+  text-align: left;
   font-size: 24px; }
 
 p.taps-message {
-  text-align: center;
-  font-size: 4em;
+  text-align: left;
+  font-size: 8em;
   padding-bottom: 15px;
   text-shadow: 0 4px 10px #AAA;
   color: #111;
-  line-height: 1.1em; }
+  line-height: 1.1em;
+  font-family: "Open Sans";
+  font-weight: 800; }
 
 h3.taps-submessage {
   text-align: center;

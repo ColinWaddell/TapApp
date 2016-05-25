@@ -9,16 +9,16 @@
     <!-- Weather View -->
     <div ng-if="!error && weather">
       <ion-content padding="true" class="has-header">
-        <ion-refresher
-          pulling-text="Pull to refresh..."
-          on-refresh="doRefresh()">
-        </ion-refresher>
+          <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+          </ion-refresher>
           <div class="card">
             <div class="item item-divider" >
               <h2 class="taps-title">{{weather.location}}, the weather is</h2>
             </div>
             <div class="item item-text-wrap">
-              <p class="taps-message">taps
+              <p class="taps-message">taps <br />
                 <span ng-class="weather.taps==='aff'?'taps-aff':'taps-oan'">{{!weather.error ? weather.taps : weather.error}}</span>
                 <h3 class="taps-submessage" ng-if="weather.message">{{weather.message}}</h3>
               </p>
