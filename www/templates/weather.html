@@ -9,7 +9,10 @@
     <!-- Weather View -->
     <div ng-if="!error && weather">
       <ion-content padding="true" class="has-header">
-
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
           <div class="card">
             <div class="item item-divider" >
               <h2 class="taps-title">{{weather.location}}, the weather is</h2>

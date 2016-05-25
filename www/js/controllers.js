@@ -79,6 +79,10 @@ angular.module('app.controllers', [])
 .controller('weatherCtrl',
   function($scope, $stateParams, $http, $window, $ionicPopup, ionicToast, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
+    $scope.doRefresh = function(){
+      $scope.grabWeatherData($scope.location);
+    }
+
     $scope.grabWeatherData = function(location) {
       $scope.title = $scope.location + "... Loading";
       $http(
@@ -88,7 +92,11 @@ angular.module('app.controllers', [])
         })
         .then(
           $scope.weatherLoadSuccess,
-          $scope.weatherLoadError);
+          $scope.weatherLoadError)
+        .finally(function() {
+          // Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
+        });
     }
 
     $scope.weatherLoadSuccess = function (res) {
