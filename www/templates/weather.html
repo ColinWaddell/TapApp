@@ -38,7 +38,7 @@
             <div ng-style="{'width' : forecastWidth}">
               <div class="row">
                 <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
-                  <div class="card">
+                  <div class="card" ng-controller="forecastIcon" on-touch="forecastToggleIcon(toggled)" on-release="forecastToggleIcon(toggled)">
                     <div class="item item-divider">
                       <h4 class="w_day">
                         {{day.datetime | date:'EEEE'}}
@@ -47,22 +47,16 @@
                     <div class="item item-text-wrap">
                       <div class="row">
                         <div class="col col-67">
-                          <div ng-controller="forecastIcon">
-                            <div ng-switch="">
-                                <div ng-hide="toggled">
-                                  <img class="w_clothing"
-                                    ng-click="forecastToggleIcon(toggled)"
-                                    ng-src="{{
-                                      day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
-                                      weatherToClothingSVG(day.code, day.temp_high_c)
-                                    }}"></img>
-                                </div>
-                                <div ng-hide="!toggled">
-                                  <img class="w_clothing"
-                                    ng-click="forecastToggleIcon(toggled)"
-                                    ng-src="{{weatherToIconSVG(day.code)}}"></img>
-                                </div>
-                            </div>
+                          <div ng-hide="toggled">
+                            <img class="w_clothing"
+                              ng-src="{{
+                                day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
+                                weatherToClothingSVG(day.code, day.temp_high_c)
+                              }}"></img>
+                          </div>
+                          <div ng-hide="!toggled">
+                            <img class="w_clothing"
+                              ng-src="{{weatherToIconSVG(day.code)}}"></img>
                           </div>
                         </div>
                         <div class="col col-33">
