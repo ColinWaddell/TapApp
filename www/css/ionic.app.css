@@ -15,6 +15,7 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic");
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9732,11 +9733,11 @@ a.button {
   transition-duration: 0s; }
 
 h2.taps-title {
-  text-align: left;
+  text-align: center;
   font-size: 22px; }
 
 p.taps-message {
-  text-align: left;
+  text-align: center;
   font-size: 8em;
   padding-bottom: 15px;
   text-shadow: 0 4px 10px #AAA;

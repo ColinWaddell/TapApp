@@ -2,6 +2,10 @@
     <!-- Loading -->
     <div ng-if="!error && !weather">
       <ion-content padding="true" class="has-header">
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
         <h1>LOADING</h1>
       </ion-content>
     </div>
@@ -18,7 +22,7 @@
               <h2 class="taps-title">{{weather.location}}, the weather is</h2>
             </div>
             <div class="item item-text-wrap">
-              <p class="taps-message">taps <br />
+              <p class="taps-message">taps
                 <span ng-class="weather.taps==='aff'?'taps-aff':'taps-oan'">{{!weather.error ? weather.taps : weather.error}}</span>
                 <h3 class="taps-submessage" ng-if="weather.message">{{weather.message}}</h3>
               </p>
@@ -101,8 +105,12 @@
     <!-- Error -->
     <div ng-if="error && !weather">
       <ion-content padding="true" class="has-header">
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
         <h1>Something went wrong</h1>
-        <h2>Swipe the page down to refresh <i class="icon ion-ios-arrow-down"></i></h2>
+        <h2>Swipe the page doon to refresh <i class="icon ion-ios-arrow-down"></i></h2>
       </ion-content>
     </div>
 
