@@ -8,7 +8,7 @@ angular.module('app.controllers', [])
   }
 
   $scope.weatherToIconSVG = function(code){
-    if(WEATHER_ICON.length < code && code > -1){
+    if(WEATHER_CLOTHING.length > code && code > -1){
       return 'img/symbols/weather/' + WEATHER_ICON[code] + ".svg";
     }else{
       return 'img/symbols/weather/cloud.svg';
