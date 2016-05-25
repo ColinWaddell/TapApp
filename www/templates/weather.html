@@ -47,15 +47,14 @@
                                     ng-click="forecastToggleIcon(toggled)"
                                     ng-src="{{
                                       day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
-                                      weatherToClothingSVG(weather.code)
+                                      weatherToClothingSVG(day.code, day.temp_high_c)
                                     }}"></img>
                                 </div>
                                 <div ng-hide="!toggled">
                                   <img class="w_clothing"
                                     ng-click="forecastToggleIcon(toggled)"
-                                    ng-src="{{weatherToIconSVG(weather.code)}}"></img>
+                                    ng-src="{{weatherToIconSVG(day.code)}}"></img>
                                 </div>
-
                             </div>
                           </div>
                         </div>

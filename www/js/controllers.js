@@ -1,7 +1,7 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON){
+.controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON, TEMPERATURES){
 
   $scope.forecastToggleIcon = function(status){
     $scope.toggled = !status;
@@ -15,9 +15,15 @@ angular.module('app.controllers', [])
     }
   }
 
-  $scope.weatherToClothingSVG = function(code){
-    if(WEATHER_CLOTHING.length < code && code > -1){
-      return 'img/symbols/clothing/' + WEATHER_CLOTHING[code] + ".svg";
+  $scope.weatherToClothingSVG = function(code, temp_high){
+    if(WEATHER_CLOTHING.length > code && code > -1){
+      /* find the temperature's status */
+      tempstatus = TEMPERATURES.filter(function(temp){
+        return temp_high > temp.lowerBound ? temp.title : null;
+      });
+      tempstatus = tempstatus.length===1 ? tempstatus[0] : tempstatus.pop();
+
+      return 'img/symbols/clothing/' + WEATHER_CLOTHING[code][tempstatus.title] + ".svg";
     }else{
       return 'img/symbols/clothing/jacket.svg';
     }

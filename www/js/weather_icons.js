@@ -1,54 +1,61 @@
 angular.module('app.weatherIcons', [])
 
+.constant('TEMPERATURES',[
+  {title:"colder", lowerBound: -273.15},
+  {title:"cold",   lowerBound:       3},
+  {title:"fair",   lowerBound:      10},
+  {title:"warm",   lowerBound:      16}
+])
+
 .constant('WEATHER_CLOTHING', [
-  "jacket", // 00 - tornado
-  "jacket", // 01 - tropical storm
-  "jacket", // 02 - hurricane
-  "jacket", // 03 - severe thunderstorms
-  "jacket", // 04 - thunderstorms
-  "jacket", // 05 - mixed jacket and snow
-  "jacket", // 06 - mixed jacket and sleet
-  "jacket", // 07 - mixed snow and sleet
-  "jacket", // 08 - freezing jacket
-  "jacket", // 09 - jacket
-  "jacket", // 10 - freezing jacket
-  "jacket", // 11 - jacket
-  "jacket", // 12 - jacket
-  "jacket", // 13 - snow flurries
-  "jacket", // 14 - light snow jacket
-  "jacket", // 15 - blowing snow
-  "jacket", // 16 - snow
-  "jacket", // 17 - hail
-  "jacket", // 18 - sleet
-  "jacket", // 19 - dust
-  "hoodie", // 20 - hoodiegy
-  "hoodie", // 21 - haze
-  "hoodie", // 22 - smoky
-  "jacket", // 23 - blustery
-  "jacket", // 24 - jacket
-  "jacket", // 25 - cold
-  "hoodie", // 26 - cloudy
-  "hoodie", // 27 - mostly cloudy (night)
-  "hoodie", // 28 - mostly cloudy (day)
-  "hoodie", // 29 - partly cloudy (night)
-  "hoodie", // 30 - partly cloudy (day)
-  "hoodie", // 31 - clear (night)
-  "tshirt", // 32 - sunny
-  "tshirt", // 33 - fair (night)
-  "tshirt", // 34 - fair (day)
-  "jacket", // 35 - mixed jacket and hail
-  "tshirt", // 36 - hot
-  "jacket", // 37 - isolated thunderstorms
-  "jacket", // 38 - scattered thunderstorms
-  "jacket", // 39 - scattered jacket
-  "jacket", // 40 - scattered jacket
-  "jacket", // 41 - heavy snow
-  "jacket", // 42 - scattered snow jacket
-  "jacket", // 43 - heavy snow
-  "hoodie", // 44 - partly cloudy
-  "jacket", // 45 - thunderjacket
-  "jacket", // 46 - snow jacket
-  "jacket"  // 47 - isolated thunderjacket
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 00 - tornado
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 01 - tropical storm
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 02 - hurricane
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 03 - severe thunderstorms
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 04 - thunderstorms
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 05 - mixed rain and snow
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 06 - mixed rain and sleet
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 07 - mixed snow and sleet
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 08 - freezing drizzle
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 09 - drizzle
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 10 - freezing rain
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 11 - showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 12 - showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 13 - snow flurries
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 14 - light snow showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 15 - blowing snow
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 16 - snow
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 17 - hail
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 18 - sleet
+  {colder:"jacket", cold:"jacket", fair:"tshirt", warm:"tshirt"}, // 19 - dust
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 20 - foggy
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 21 - haze
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 22 - smoky
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"tshirt"}, // 23 - blustery
+  {colder:"jacket", cold:"jacket", fair:"hoddie", warm:"tshirt"}, // 24 - windy
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"hoodie"}, // 25 - cold
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 26 - cloudy
+  {colder:"hoodie", cold:"hoodie", fair:"hoodie", warm:"tshirt"}, // 27 - mostly cloudy (night)
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 28 - mostly cloudy (day)
+  {colder:"hoodie", cold:"hoodie", fair:"hoodie", warm:"tshirt"}, // 29 - partly cloudy (night)
+  {colder:"hoodie", cold:"hoodie", fair:"tshirt", warm:"tshirt"}, // 30 - partly cloudy (day)
+  {colder:"hoodie", cold:"hoodie", fair:"hoodie", warm:"tshirt"}, // 31 - clear (night)
+  {colder:"tshirt", cold:"tshirt", fair:"tshirt", warm:"tshirt"}, // 32 - sunny
+  {colder:"tshirt", cold:"tshirt", fair:"tshirt", warm:"tshirt"}, // 33 - fair (night)
+  {colder:"tshirt", cold:"tshirt", fair:"tshirt", warm:"tshirt"}, // 34 - fair (day)
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 35 - mixed rain and hail
+  {colder:"tshirt", cold:"tshirt", fair:"hoodie", warm:"tshirt"}, // 36 - hot
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"tshirt"}, // 37 - isolated thunderstorms
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"tshirt"}, // 38 - scattered thunderstorms
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"tshirt"}, // 39 - scattered showers
+  {colder:"jacket", cold:"jacket", fair:"hoodie", warm:"tshirt"}, // 40 - scattered showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 41 - heavy snow
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 42 - scattered snow showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 43 - heavy snow
+  {colder:"hoodie", cold:"hoodie", fair:"hoodie", warm:"tshirt"}, // 44 - partly cloudy
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"tshirt"}, // 45 - thundershowers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"hoodie"}, // 46 - snow showers
+  {colder:"jacket", cold:"jacket", fair:"jacket", warm:"tshirt"}  // 47 - isolated thundershowers
 ])
 
 .constant('WEATHER_ICON', [
