@@ -18,14 +18,15 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+$font-family-base: "Open Sans", sans-serif !default;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
 // Taps area styles
 h2.taps-title{
   text-align: left;
-  font-size: 24px;
-  font-family: "Open Sans";
+  font-size: 22px;
 }
 p.taps-message {
   text-align: left;
@@ -34,7 +35,6 @@ p.taps-message {
   text-shadow:0 4px 10px #AAA;
   color:#111;
   line-height: 1.1em;
-  font-family: "Open Sans";
   font-weight: 800;
 }
 h3.taps-submessage{
