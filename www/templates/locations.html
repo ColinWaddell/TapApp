@@ -15,19 +15,19 @@
           </button>
         </div>
 
-        <div class="search-suggestions" ng-if="search_suggestions.length">
+        <div class="search-suggestions" ng-show="search_loc">
           <div class="item" ng-repeat="suggestion in search_suggestions">
             <p ng-click="searchLocation(suggestion)">{{suggestion}}</p>
           </div>
         </div>
 
-        <div ng-hide="search_suggestions.length">
+        <div ng-show="search_suggestions">
           <div class="item item-divider item-icon-right">
             Favorites
             <i class="icon placeholder-icon ion-ios-star"></i>
           </div>
 
-          <div class="item" ng-repeat="fav in favorites track by fav.id">
+          <div class="item" ng-repeat="fav in favorites">
             <p ng-click="loadFavoriteById(fav.id)">{{fav.location}}</p>
           </div>
         </div>
