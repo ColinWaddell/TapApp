@@ -1793,6 +1793,7 @@ angular.module('app.placenames', [])
         "Loftus"
     ],
     "lon": [
+        "London",
         "Londonderry",
         "Long Ashton",
         "Long Man",
