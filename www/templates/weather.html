@@ -38,7 +38,7 @@
             <div ng-style="{'width' : forecastWidth}">
               <div class="row">
                 <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
-                  <div class="card" ng-controller="forecastIcon" on-hold="forecastToggleIcon(toggled)" on-release="forecastToggleIcon(toggled)">
+                  <div class="card" ng-controller="forecastIcon" on-hold="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">
                     <div class="item item-divider">
                       <h4 class="w_day">
                         {{day.datetime | date:'EEEE'}}

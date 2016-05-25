@@ -3,8 +3,12 @@ angular.module('app.controllers', [])
 
 .controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON, TEMPERATURES){
 
-  $scope.forecastToggleIcon = function(status){
-    $scope.toggled = !status;
+  $scope.forecastToggleIconHold = function(status){
+    $scope.toggled = true;
+  }
+
+  $scope.forecastToggleIconRelease = function(status){
+    $scope.toggled = false;
   }
 
   $scope.weatherToIconSVG = function(code){
