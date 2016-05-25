@@ -9733,7 +9733,8 @@ a.button {
 
 h2.taps-title {
   text-align: left;
-  font-size: 24px; }
+  font-size: 24px;
+  font-family: "Open Sans"; }
 
 p.taps-message {
   text-align: left;

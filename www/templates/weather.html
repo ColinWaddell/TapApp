@@ -2,7 +2,7 @@
     <!-- Loading -->
     <div ng-if="!error && !weather">
       <ion-content padding="true" class="has-header">
-        LOADING
+        <h1>LOADING</h1>
       </ion-content>
     </div>
 
@@ -101,7 +101,8 @@
     <!-- Error -->
     <div ng-if="error && !weather">
       <ion-content padding="true" class="has-header">
-        <p>{{error}}</p>
+        <h1>Something went wrong</h1>
+        <h2>Swipe the page down to refresh <i class="icon ion-ios-arrow-down"></i></h2>
       </ion-content>
     </div>
 
