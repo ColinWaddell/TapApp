@@ -1,23 +1,29 @@
 
 // Taps area styles
 h2.taps-title{
-  text-align: center;
-  font-size: 22px;
+  text-align: left;
+  font-size: 4em;
 }
 p.taps-message {
-  text-align: center;
+  text-align: left;
   font-size:8em;
-  padding-bottom: 15px;
-  text-shadow:0 4px 10px #AAA;
-  color:#111;
-  line-height: 1.1em;
+  color: $base-color;
+  line-height: 1em;
   font-weight: 800;
 }
 h3.taps-submessage{
-  text-align: center;
+  text-align: left;
   font-style: italic;
 }
 
-span.taps-aff { color:#FF5454; }
+.taps-message.taps-aff { color: darken($assertive, 20%); }
 
-span.taps-oan { color:#2A44F0; }
+.taps-message.taps-oan { color: darken($positive, 10%); }
+
+.page-taps-oan{
+  background-color: lighten($positive, 35%);
+}
+
+.page-taps-aff{
+  background-color: lighten($assertive, 35%);
+}

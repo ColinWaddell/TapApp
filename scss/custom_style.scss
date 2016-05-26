@@ -1,2 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic');
 $font-family-base: "Open Sans", sans-serif !default;
+
+$dark:      #2C3E50;
+$assertive: #E74C3C;
+$light:     #ECF0F1;
+$calm:      #3498DB;
+$positive:  #2980B9;
+$yellow:    #F3E59A;
+
+
+$base-color: $dark;
+$tabs-icon-size:                  32px !default;
