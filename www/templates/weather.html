@@ -1,4 +1,5 @@
-<ion-view id="page3" class=" " hide-nav-bar="true">
+<ion-view id="page3" class=" " hide-nav-bar="true"
+  ng-class="{{weather.taps ? 'taps-'+weather.taps : ''}}">
     <!-- Loading -->
     <div ng-if="!error && !weather">
       <ion-content padding="true" class="has-header">
@@ -35,7 +36,7 @@
 
         <div class="taps-forecase">
           <ion-scroll zooming="false" direction="x">
-            <div ng-style="{'width' : forecastWidth}">
+            <div ng-style="{'width' : '1500px'}">
               <div class="row">
                 <div class="col w_box" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
                   <div class="card" ng-controller="forecastIcon" on-hold="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">

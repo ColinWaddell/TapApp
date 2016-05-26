@@ -206,8 +206,6 @@ angular.module('app.controllers', [])
     /* THE CODE */
     $scope.favorite = false;
     $scope.notify = false;
-    narrow_size = $window.innerWidth < $window.innerHeight ? $window*$window.innerWidth : $window.innerHeight;
-    $scope.forecastWidth =  (4*narrow_size) + 'px';
   })
 
   .controller('settingsCtrl', function($scope, Favorites) {
