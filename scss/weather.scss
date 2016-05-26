@@ -1,0 +1,40 @@
+// Forecase Styles
+img.w_clothing{
+  width: 100%;
+  height: 100%;
+}
+
+div.w_box{
+
+}
+h4.w_day{
+  display: block;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+}
+p.w_temp{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 12px;
+  background: #ddd;
+}
+p.w_temp_padding{
+  margin-top:75%;
+}
+p.w_temp_high{
+  font-weight: bold;
+}
+p.w_temp_low{
+  font-weight: 300;
+}
+h4.w_description{
+  text-align: center;
+}
+
+/* Search Box */
+.search-suggestions .item{
+  background: #efefef;
+}

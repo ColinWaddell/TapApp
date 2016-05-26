@@ -18,72 +18,14 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic');
-$font-family-base: "Open Sans", sans-serif !default;
+// Theme customisations
+@import "custom_style";
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-// Taps area styles
-h2.taps-title{
-  text-align: center;
-  font-size: 22px;
-}
-p.taps-message {
-  text-align: center;
-  font-size:8em;
-  padding-bottom: 15px;
-  text-shadow:0 4px 10px #AAA;
-  color:#111;
-  line-height: 1.1em;
-  font-weight: 800;
-}
-h3.taps-submessage{
-  text-align: center;
-  font-style: italic;
-}
+// Weather details
+@import "weather";
 
-span.taps-aff { color:#FF5454; }
-
-span.taps-oan { color:#2A44F0; }
-
-// Forecase Styles
-img.w_clothing{
-  width: 100%;
-  height: 100%;
-}
-
-div.w_box{
-
-}
-h4.w_day{
-  display: block;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 2px;
-}
-p.w_temp{
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 2px 0;
-  font-size: 12px;
-  background: #ddd;
-}
-p.w_temp_padding{
-  margin-top:75%;
-}
-p.w_temp_high{
-  font-weight: bold;
-}
-p.w_temp_low{
-  font-weight: 300;
-}
-h4.w_description{
-  text-align: center;
-}
-
-/* Search Box */
-.search-suggestions .item{
-  background: #efefef;
-}
+// Taps Aff stuff
+@import "tapsaff";
