@@ -1,6 +1,7 @@
 angular.module('app.routes', [])
 
-.constant('DB_CONFIG', {
+.constant('DB_CONFIG',
+  {
     name: 'DB',
     tables: [
       {
@@ -10,14 +11,30 @@ angular.module('app.routes', [])
           {name: 'location', type: 'text'},
           {name: 'notify', type: 'integer'}
         ]
+      },
+      {
+        name: 'settings',
+        columns: [
+          {name: 'id', type: 'integer primary key'},
+          {name: 'tempScale', type: 'text'},
+          {name: 'iconDefault', type: 'text'}
+        ]
       }
     ]
-})
+  }
+)
+
+.constant(
+  'SETTINGSDFTL',{
+    tempScale: 'C',
+    iconDefault: 'clothing'
+  }
+)
 
 .constant(
   'TAP_SERVER', {
-    url: 'http://www.taps-aff.co.uk/?api&location='
-    // url: '/download.json?'
+    // url: 'http://www.taps-aff.co.uk/?api&location='
+    url: '/download.json?'
     // url: '/place_error.json?'
   }
 )

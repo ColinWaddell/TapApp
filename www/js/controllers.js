@@ -242,8 +242,14 @@ angular.module('app.controllers', [])
     $scope.settings = {};
   })
 
-  .controller('settingsCtrl', function($scope, $window, Favorites) {
+  .controller('settingsCtrl', function($scope, $window, Favorites, Settings) {
     $scope.delete_confim = false;
+
+    //$scope.settings = Settings.get();
+
+    $scope.tempScaleChange = function(){
+      Settings.update('tempScale', $scope.settings.tempScale);
+    }
 
     $scope.ClearFavorites = function(){
       Favorites.deleteAll();

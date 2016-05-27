@@ -146,6 +146,47 @@ angular.module('app.services', [])
     return self;
 })
 
+.factory('Settings', function(DB, SETTINGSDFTL) {
+    var self = this;
+
+    self.preloadSettingsDefaults = function(){
+      DB.query("INSERT INTO settings (tempScale, iconDefault) VALUES (?,?)",
+        [SETTINGSDFTL.tempScale, SETTINGSDFTL.iconDefault]);
+    }
+
+    self.get = function(){
+      return DB.query('SELECT * FROM settings WHERE id = 1')
+      .then(function(result){
+          return DB.fetch(result);
+      });
+    }
+
+    self.update = function(setting, value){
+      return DB.query(
+        'UPDATE favorites SET '+setting+' = (?) WHERE id = 1', [value])
+        .then(function(result){
+          console.log(result);
+        });
+    }
+
+    self.init = function(){
+      /* Check if settings are empty
+         and preload with defaults
+         if required */
+      return DB.query(
+        "SELECT count(*) FROM settings")
+      .then(function(count){
+        count = count.rows[0]['count(*)'];
+        if(!count){
+          self.preloadSettingsDefaults();
+        }
+      });
+
+    }
+
+    self.init();
+    return self;
+})
 
 .factory('BlankFactory', [function(){
 
