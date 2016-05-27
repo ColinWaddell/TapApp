@@ -37,8 +37,10 @@ angular.module('app.controllers', [])
 })
 
 .controller('locationsCtrl', function($scope, $state, Favorites, Placenames) {
-  $scope.search_loc = "";
-  $scope.search_suggestions = [];
+  $scope.search = {
+    location: "",
+    suggestions: []
+  }
 
   $scope.$on("$ionicView.enter", function(event, data){
     Favorites
@@ -50,7 +52,7 @@ angular.module('app.controllers', [])
   });
 
   $scope.searchFilter = function(search_loc){
-    $scope.search_suggestions = Placenames.getNames(search_loc);
+    $scope.search.suggestions = Placenames.getNames(search_loc);
   }
 
   $scope.searchLocation = function (search_loc) {
@@ -58,8 +60,10 @@ angular.module('app.controllers', [])
     $state.go('tabsController.weather', {'location': search_loc});
   };
   $scope.clearSearch = function () {
-    $scope.search_loc = "";
-    $scope.search_suggestions = {};
+    $scope.search = {
+      location: "",
+      suggestions: {}
+    }
   };
 
   $scope.loadFavoriteById = function(id){
@@ -77,7 +81,6 @@ angular.module('app.controllers', [])
       okText: 'Apology Accepted'
     });
   }
-
 })
 
 .controller('weatherCtrl',
@@ -125,7 +128,10 @@ angular.module('app.controllers', [])
 
     $scope.favoriteLoadSuccess = function(fav) {
       angular.extend($scope, fav)
-      $scope.favorite = true;
+      $scope.settings = {
+        favorite: true,
+        notify: !!fav.notify
+      }
       $scope.grabWeatherData($scope.location);
     }
 
@@ -139,7 +145,10 @@ angular.module('app.controllers', [])
 
     $scope.favoriteAddSuccess = function(id) {
       $scope.id = id;
-      $scope.favorite = true;
+      $scope.settings = {
+        favorite: true,
+        notify: false
+      };
     }
 
     $scope.favoriteAddFailure = function() {
@@ -152,7 +161,10 @@ angular.module('app.controllers', [])
 
     $scope.favoriteDeleteSuccess = function(id) {
       $scope.id = null;
-      $scope.favorite = false;
+      $scope.settings = {
+        favorite: false,
+        notify: false
+      };
     }
 
     $scope.favoriteDeleteFailure = function() {
@@ -161,10 +173,31 @@ angular.module('app.controllers', [])
         template: 'Sorry - Try restarting the app or clearing the favorites list in Settings.',
         okText: 'Apology Accepted'
       });
-    }
+    };
+
+    $scope.toggleNotification = function(){
+      if($scope.settings.notify)
+        Favorites
+          .setNotification($scope.id, true)
+          .then(function(){},
+          function(){
+            ionicToast.show(
+              'Error storing notification setting', 'middle', false, 1500
+            );
+          });
+      else
+        Favorites
+          .setNotification($scope.id, false)
+          .then(function(){},
+          function(){
+            ionicToast.show(
+              'Error storing notification setting', 'middle', false, 1500
+            );
+          });
+    };
 
     $scope.toggleFavorite = function(){
-      if($scope.favorite)
+      if(!$scope.settings.favorite)
         Favorites
           .delete($scope.id)
           .then($scope.favoriteDeleteSuccess, $scope.favoriteDeleteFailure);
@@ -172,7 +205,6 @@ angular.module('app.controllers', [])
         Favorites
           .add($scope.location)
           .then($scope.favoriteAddSuccess, $scope.favoriteAddFailure);
-      ;
     }
 
     /* Attempt to load via a given id parameter */
@@ -204,15 +236,15 @@ angular.module('app.controllers', [])
     }
 
     /* THE CODE */
-    $scope.favorite = false;
-    $scope.notify = false;
+    $scope.settings = {};
   })
 
-  .controller('settingsCtrl', function($scope, Favorites) {
+  .controller('settingsCtrl', function($scope, $window, Favorites) {
     $scope.delete_confim = false;
 
     $scope.ClearFavorites = function(){
-    Favorites.deleteAll();
+      Favorites.deleteAll();
+      $window.location.reload(true);
+    }
   }
-
-})
+)

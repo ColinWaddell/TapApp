@@ -12,9 +12,6 @@ angular.module('app.placenames', [])
         "Abercarn",
         "Aberdare",
         "Aberdeen",
-        "Aberdeen Airport",
-        "Aberdeen City",
-        "Aberdeenshire",
         "Aberdovey",
         "Aberffraw",
         "Abergavenny",
@@ -892,7 +889,6 @@ angular.module('app.placenames', [])
     "dun": [
         "Dunchurch",
         "Dundee",
-        "Dundee City",
         "Dundonald",
         "Dunfermline",
         "Dungannon",
@@ -1151,7 +1147,6 @@ angular.module('app.placenames', [])
     "gla": [
         "Glantwymyn",
         "Glasgow",
-        "Glasgow City",
         "Glastonbury"
     ],
     "gle": [
@@ -2990,8 +2985,7 @@ angular.module('app.placenames', [])
         "Wellingborough",
         "Wellington",
         "Wells-next-the-Sea",
-        "Welwyn",
-        "Welwyn Garden City"
+        "Welwyn"
     ],
     "wem": [
         "Wemyss Bay"

@@ -8,7 +8,7 @@ angular.module('app.routes', [])
         columns: [
           {name: 'id', type: 'integer primary key'},
           {name: 'location', type: 'text'},
-          {name: 'notifications', type: 'integer'}
+          {name: 'notify', type: 'integer'}
         ]
       }
     ]
@@ -17,7 +17,7 @@ angular.module('app.routes', [])
 .constant(
   'TAP_SERVER', {
     url: 'http://www.taps-aff.co.uk/?api&location='
-    // url: 'download.json?'
+    // url: '/download.json?'
     // url: '/place_error.json?'
   }
 )

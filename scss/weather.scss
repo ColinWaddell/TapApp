@@ -1,7 +1,10 @@
 // Forecase Styles
+img.w_icon,
 img.w_clothing{
   width: 100%;
   height: 100%;
+  -webkit-filter: drop-shadow( 2px 2px 1px rgba(0,0,0,0.24) );
+          filter: drop-shadow( 2px 2px 1px rgba(0,0,0,0.24) ); /* Same syntax as box-shadow */
 }
 
 div.w_box{
@@ -74,6 +77,15 @@ h3.w_description{
 .forecast-taps-oan .w_description{
   background-color: lighten($positive, 50%);
 }
+
+.settings-taps-aff .item{
+  background-color: lighten($assertive, 35%);
+}
+
+.settings-taps-oan .item{
+  background-color: lighten($positive, 50%);
+}
+
 
 /* Search Box */
 .search-suggestions .item{

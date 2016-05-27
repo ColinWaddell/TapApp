@@ -79,11 +79,20 @@ angular.module('app.services', [])
 
     self.add = function(location) {
       return DB.query(
-        'INSERT INTO favorites (location, notifications) VALUES (?,?)',
+        'INSERT INTO favorites (location, notify) VALUES (?,?)',
         [location, 0])
       .then(function(result){
         return result.insertId;
       });
+    }
+
+    self.setNotification = function(id, enabled){
+      enabled = enabled===true ? '1' : '0';
+      return DB.query(
+        'UPDATE favorites SET notify = (?) WHERE id = (?)', [enabled, id])
+        .then(function(result){
+          console.log(result);
+        });
     }
 
     self.delete = function (id){
@@ -93,7 +102,10 @@ angular.module('app.services', [])
 
     self.deleteAll= function () {
       return DB.query(
-        'DELETE FROM favorites');
+        'DROP TABLE favorites')
+      .then(function(result){
+        DB.init();
+      });
     }
 
     return self;

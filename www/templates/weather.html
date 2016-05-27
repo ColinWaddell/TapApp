@@ -32,7 +32,7 @@
               <p class="taps-message">taps</p>
             </div>
             <div class="col col-33" ng-controller="forecastIcon">
-                <img class="w_clothing"
+                <img class="w_icon"
                   ng-src="{{weatherToIconSVG(weather.code, weather.daytime)}}"></img>
             </div>
           </div>
@@ -94,7 +94,7 @@
                               }}"></img>
                           </div>
                           <div ng-hide="!toggled">
-                            <img class="w_clothing"
+                            <img class="w_icon"
                               ng-src="{{weatherToIconSVG(day.code, true )}}"></img>
                           </div>
                         </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="">
                       <h3 class="w_description">{{
-                        day.taps==='aff' ? 'Taps Aff!' :
+                        day.taps==='aff' ? 'TAPS AFF' :
                         weather.description
                       }}</h3>
                     </div>
@@ -117,18 +117,18 @@
            </ion-scroll>
         </div>
 
-        <ion-list>
-          <ion-checkbox ng-change="toggleFavorite()" ng-model="favorite">
+        <ion-list class="{{weather.taps ? 'settings-taps-'+weather.taps : ''}}">
+          <ion-checkbox ng-change="toggleFavorite()" ng-model="settings.favorite">
             <i class="icon placeholder-icon"
-               ng-class="favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
+               ng-class="settings.favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
             </i>
-            {{favorite ? 'Saved' : 'Save to favorites'}}
+            {{settings.favorite ? 'Saved' : 'Save to favorites'}}
           </ion-checkbox>
-          <ion-checkbox on-click="addFavorite()" ng-if="favorite">
+          <ion-checkbox ng-change="toggleNotification()" ng-show="settings.favorite" ng-model="settings.notify">
             <i class="icon placeholder-icon"
                ng-class="settings.notify ? 'ion-android-notifications' : 'ion-android-notifications-off'">
             </i>
-            {{notify ? 'Notifications Enabled' : 'Notifications Disabled'}}
+            {{settings.notify ? 'Notifications Enabled' : 'Notifications Disabled'}}
           </ion-checkbox>
         </ion-list>
 

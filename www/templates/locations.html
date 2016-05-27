@@ -5,23 +5,23 @@
           <label class="item-input-wrapper">
             <input
               type="search"
-              my-enter="searchLocation(search_loc)"
-              ng-model="search_loc"
-              ng-change="searchFilter(search_loc)"
+              my-enter="searchLocation(search.location)"
+              ng-model="search.location"
+              ng-change="searchFilter(search.location)"
               placeholder="Search the UK...">
           </label>
-          <button class="button button-small" ng-click="search_loc = null">
+          <button class="button button-small" ng-click="search.location = null">
             <i class="icon ion-close-round placeholder-icon"></i>
           </button>
         </div>
 
-        <div class="search-suggestions" ng-show="search_loc">
-          <div class="item" ng-repeat="suggestion in search_suggestions">
+        <div class="search-suggestions" ng-show="search.location">
+          <div class="item" ng-repeat="suggestion in search.suggestions">
             <p ng-click="searchLocation(suggestion)">{{suggestion}}</p>
           </div>
         </div>
 
-        <div ng-show="search_suggestions">
+        <div ng-hide="search.location.length">
           <div class="item item-divider item-icon-right">
             Favorites
             <i class="icon placeholder-icon ion-ios-star"></i>
