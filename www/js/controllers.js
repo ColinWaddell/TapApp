@@ -1,6 +1,57 @@
 /*global angular */
 angular.module('app.controllers', [])
 
+.controller('GeoCtrl', function($cordovaGeolocation, $ionicPopup) {
+
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+  $scope.findMe = function fuction(){
+    $cordovaGeolocation
+      .getCurrentPosition(posOptions)
+      .then(function (position) {
+        var lat  = position.coords.latitude
+        var long = position.coords.longitude
+        var alertPopup = $ionicPopup.alert({
+          title: 'Lat/Lng',
+          template: 'lat:' + lat +' lng:' + lng,
+          okText: 'cool'
+        });
+      }, function(err) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Lat/Lng',
+          template: 'that didnt work',
+          okText: 'cool'
+        });
+      });
+  }
+
+  var watchOptions = {
+    timeout : 3000,
+    enableHighAccuracy: false // may cause errors if true
+  };
+
+  var watch = $cordovaGeolocation.watchPosition(watchOptions);
+  watch.then(
+    null,
+    function(err) {
+      // error
+    },
+    function(position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+  });
+
+
+  watch.clearWatch();
+  // OR
+  $cordovaGeolocation.clearWatch(watch)
+    .then(function(result) {
+      // success
+      }, function (error) {
+      // error
+    });
+})
+
 .controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON, TEMPERATURES){
 
   $scope.forecastToggleIconHold = function(status){
@@ -68,7 +119,7 @@ angular.module('app.controllers', [])
 
   $scope.loadFavoriteById = function(id){
     $state.go('tabsController.weather', {'location': id});
-  }
+  };
 
   $scope.popluateFavorites = function(favorites){
     $scope.favorites = favorites;
