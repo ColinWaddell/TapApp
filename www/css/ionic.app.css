@@ -9749,7 +9749,7 @@ div.forecast-taps-aff {
   background-color: #f8c9c4; }
 
 div.forecast-taps-oan {
-  background-color: #75b9e7; }
+  background-color: #d2e7f5; }
 
 .w_day {
   display: block;
@@ -9777,11 +9777,11 @@ p.w_temp_padding {
 
 p.w_temp_high {
   font-weight: bold;
-  background: #f8f1c8; }
+  background: #f0df83; }
 
 p.w_temp_low {
   font-weight: 300;
-  background: #8bc4ea; }
+  background: #f6ebb1; }
 
 .w_description {
   text-align: center;

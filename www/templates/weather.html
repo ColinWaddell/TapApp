@@ -76,7 +76,7 @@
           <ion-scroll zooming="false" direction="x">
             <div ng-style="{'width' : '1500px'}">
               <div class="row">
-                <div class="col w_box {{day.taps ? 'forecast-taps-'+weather.taps : ''}}" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
+                <div class="col w_box {{day.taps ? 'forecast-taps-'+day.taps : ''}}" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
                   <div class="" ng-controller="forecastIcon" on-touch="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">
                     <div class="">
                       <h3 class="w_day">

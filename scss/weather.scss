@@ -18,7 +18,7 @@ div.forecast-taps-aff{
   background-color: lighten($assertive, 30%);
 }
 div.forecast-taps-oan{
-    background-color: lighten($calm, 15%);
+    background-color: lighten($positive, 45%);
 }
 .w_day{
   display: block;
@@ -49,11 +49,11 @@ p.w_temp_padding{
 }
 p.w_temp_high{
   font-weight: bold;
-  background: lighten($yellow, 10%);
+  background: darken($yellow, 5%);
 }
 p.w_temp_low{
   font-weight: 300;
-  background: lighten($calm, 20%);
+  background: lighten($yellow, 5%);
 }
 .w_description{
   text-align: center;
