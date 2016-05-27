@@ -16,6 +16,9 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic");
+.tab-item {
+  padding-top: 6px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9805,7 +9808,7 @@ p.taps-message {
   text-align: left;
   font-size: 8em;
   color: #2C3E50;
-  line-height: 1em;
+  line-height: 1.1em;
   font-weight: 800; }
 
 h3.taps-submessage {
