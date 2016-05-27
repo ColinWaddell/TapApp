@@ -84,7 +84,9 @@ angular.module('app.controllers', [])
 })
 
 .controller('weatherCtrl',
-  function($scope, $stateParams, $http, $window, $ionicPopup, ionicToast, Favorites, TAP_SERVER, WEATHER_CLOTHING) {
+  function($scope, $stateParams, $http, $window,
+           $ionicPopup, $ionicScrollDelegate, ionicToast,
+           Favorites, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.doRefresh = function(){
       $scope.grabWeatherData($scope.location);
@@ -149,6 +151,7 @@ angular.module('app.controllers', [])
         favorite: true,
         notify: false
       };
+      $ionicScrollDelegate.scrollBottom();
     }
 
     $scope.favoriteAddFailure = function() {
