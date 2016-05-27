@@ -33,7 +33,7 @@
             </div>
             <div class="col col-33" ng-controller="forecastIcon">
                 <img class="w_clothing"
-                  ng-src="{{weatherToIconSVG(weather.code)}}"></img>
+                  ng-src="{{weatherToIconSVG(weather.code, weather.daytime)}}"></img>
             </div>
           </div>
 
@@ -61,9 +61,13 @@
         </div>
 
         <div class="row">
-          <div class=col>
-            <p><strong>Current Weather: </strong>{{weather.description}}</p>
-            <p><strong>Feels like:</strong> {{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</p>
+          <div class="col col-67">
+            <h3><strong>Current Weather: </strong></h3>
+            <h3><strong>Feels like:</strong> </h3>
+          </div>
+          <div class="col col-33">
+            <h3>{{weather.description}}</h3>
+            <h3>{{weather.temp_c}}&deg;C ({{weather.temp_f}}&deg;F)</h3>
           </div>
         </div>
 
@@ -72,10 +76,10 @@
           <ion-scroll zooming="false" direction="x">
             <div ng-style="{'width' : '1500px'}">
               <div class="row">
-                <div class="col w_box {{day.taps ? 'forecast-taps-'+day.taps : ''}}" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
-                  <div class="" ng-controller="forecastIcon" on-hold="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">
+                <div class="col w_box {{day.taps ? 'forecast-taps-'+weather.taps : ''}}" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
+                  <div class="" ng-controller="forecastIcon" on-touch="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">
                     <div class="">
-                      <h4 class="w_day">
+                      <h3 class="w_day">
                         {{day.datetime | date:'EEEE'}}
                       </h4>
                     </div>
@@ -91,7 +95,7 @@
                           </div>
                           <div ng-hide="!toggled">
                             <img class="w_clothing"
-                              ng-src="{{weatherToIconSVG(day.code)}}"></img>
+                              ng-src="{{weatherToIconSVG(day.code, true )}}"></img>
                           </div>
                         </div>
                         <div class="col col-33">
@@ -101,10 +105,10 @@
                     </div>
                     </div>
                     <div class="">
-                      <h4 class="w_description">{{
+                      <h3 class="w_description">{{
                         day.taps==='aff' ? 'Taps Aff!' :
                         weather.description
-                      }}</h4>
+                      }}</h3>
                     </div>
                   </div>
                 </div>

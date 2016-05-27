@@ -11,9 +11,9 @@ angular.module('app.controllers', [])
     $scope.toggled = false;
   }
 
-  $scope.weatherToIconSVG = function(code){
+  $scope.weatherToIconSVG = function(code, daytime){
     if(WEATHER_CLOTHING.length > code && code > -1){
-      return 'img/symbols/weather/' + WEATHER_ICON[code] + ".svg";
+      return 'img/symbols/weather/' + WEATHER_ICON[code][daytime ? 'day' : 'night'] + ".svg";
     }else{
       return 'img/symbols/weather/cloud.svg';
     }

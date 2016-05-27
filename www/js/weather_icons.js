@@ -59,52 +59,52 @@ angular.module('app.weatherIcons', [])
 ])
 
 .constant('WEATHER_ICON', [
-  "wind_lightning", // 00 - tornado
-  "wind_rain", // 01 - tropical storm
-  "windy", // 02 - hurricane
-  "wind_lightning", // 03 - severe thunderstorms
-  "wind_lightning", // 04 - thunderstorms
-  "rain_snow", // 05 - mixed rain and snow
-  "rain_snow", // 06 - mixed rain and sleet
-  "rain_snow", // 07 - mixed snow and sleet
-  "drizzle", // 08 - freezing drizzle
-  "rain", // 09 - drizzle
-  "drizzle", // 10 - freezing rain
-  "showers", // 11 - showers
-  "showers", // 12 - showers
-  "wind_cloud_snow", // 13 - snow flurries
-  "wind_cloud_snow", // 14 - light snow showers
-  "wind_cloud_snow", // 15 - blowing snow
-  "cloud_snow", // 16 - snow
-  "rain_snow", // 17 - hail
-  "rain_snow", // 18 - sleet
-  "windy", // 19 - dust
-  "fog", // 20 - foggy
-  "fog", // 21 - haze
-  "fog", // 22 - smoky
-  "windy", // 23 - blustery
-  "windy", // 24 - windy
-  "temp_low", // 25 - cold
-  "cloud", // 26 - cloudy
-  "cloud_night", // 27 - mostly cloudy (night)
-  "cloud_sun", // 28 - mostly cloudy (day)
-  "cloud_night", // 29 - partly cloudy (night)
-  "cloud_sun", // 30 - partly cloudy (day)
-  "clear_night", // 31 - clear (night)
-  "sun_clear", // 32 - sunny
-  "clear_night", // 33 - fair (night)
-  "sun_clear", // 34 - fair (day)
-  "rain_snow", // 35 - mixed rain and hail
-  "temp_high", // 36 - hot
-  "lightning", // 37 - isolated thunderstorms
-  "rain_lightning", // 38 - scattered thunderstorms
-  "showers", // 39 - scattered showers
-  "showers", // 40 - scattered showers
-  "cloud_snow", // 41 - heavy snow
-  "cloud_snow", // 42 - scattered snow showers
-  "cloud_snow", // 43 - heavy snow
-  "cloud", // 44 - partly cloudy
-  "rain_lightning", // 45 - thundershowers
-  "rain_snow", // 46 - snow showers
-  "rain_lightning"  // 47 - isolated thundershowers
+  {day: "wind_lightning",   night: "wind_lightning"}, // 00 - tornado
+  {day: "wind_rain",        night: "wind_rain"}, // 01 - tropical storm
+  {day: "windy",            night: "cloud_wind_night"}, // 02 - hurricane
+  {day: "wind_lightning",   night: "wind_lightning"}, // 03 - severe thunderstorms
+  {day: "wind_lightning",   night: "wind_lightning"}, // 04 - thunderstorms
+  {day: "rain_snow",        night: "rain_snow"}, // 05 - mixed rain and snow
+  {day: "rain_snow",        night: "rain_snow"}, // 06 - mixed rain and sleet
+  {day: "rain_snow",        night: "rain_snow"}, // 07 - mixed snow and sleet
+  {day: "drizzle",          night: "cloud_rain_night"}, // 08 - freezing drizzle
+  {day: "rain",             night: "cloud_rain_night"}, // 09 - drizzle
+  {day: "drizzle",          night: "cloud_rain_night"}, // 10 - freezing rain
+  {day: "showers",          night: "showers"}, // 11 - showers
+  {day: "showers",          night: "showers"}, // 12 - showers
+  {day: "wind_cloud_snow",  night: "snow_night"}, // 13 - snow flurries
+  {day: "wind_cloud_snow",  night: "snow_night"}, // 14 - light snow showers
+  {day: "wind_cloud_snow",  night: "snow_night"}, // 15 - blowing snow
+  {day: "cloud_snow",       night: "snow_night"}, // 16 - snow
+  {day: "rain_snow",        night: "rain_snow"}, // 17 - hail
+  {day: "rain_snow",        night: "rain_snow"}, // 18 - sleet
+  {day: "windy",            night: "windy"}, // 19 - dust
+  {day: "fog",              night: "fog"}, // 20 - foggy
+  {day: "fog",              night: "fog"}, // 21 - haze
+  {day: "fog",              night: "fog"}, // 22 - smoky
+  {day: "windy",            night: "windy"}, // 23 - blustery
+  {day: "windy",            night: "windy"}, // 24 - windy
+  {day: "temp_low",         night: "temp_low"}, // 25 - cold
+  {day: "cloud",            night: "cloud_night"}, // 26 - cloudy
+  {day: "cloud_night",      night: "cloud_night"}, // 27 - mostly cloudy (night)
+  {day: "cloud_sun",        night: "cloud_night"}, // 28 - mostly cloudy (day)
+  {day: "cloud_night",      night: "cloud_night"}, // 29 - partly cloudy (night)
+  {day: "cloud_sun",        night: "cloud_night"}, // 30 - partly cloudy (day)
+  {day: "clear_night",      night: "clear_night"}, // 31 - clear (night)
+  {day: "sun_clear",        night: "clear_night"}, // 32 - sunny
+  {day: "clear_night",      night: "clear_night"}, // 33 - fair (night)
+  {day: "sun_clear",        night: "clear_night"}, // 34 - fair (day)
+  {day: "rain_snow",        night: "rain_snow"}, // 35 - mixed rain and hail
+  {day: "temp_high",        night: "temp_high"}, // 36 - hot
+  {day: "lightning",        night: "lightning_night"}, // 37 - isolated thunderstorms
+  {day: "lightning",        night: "lightning_night"}, // 38 - scattered thunderstorms
+  {day: "showers",          night: "showers"}, // 39 - scattered showers
+  {day: "showers",          night: "showers"}, // 40 - scattered showers
+  {day: "cloud_snow",       night: "snow_night"}, // 41 - heavy snow
+  {day: "cloud_snow",       night: "snow_night"}, // 42 - scattered snow showers
+  {day: "cloud_snow",       night: "snow_night"}, // 43 - heavy snow
+  {day: "cloud",            night: "cloud_night"}, // 44 - partly cloudy
+  {day: "rain_lightning",   night: "rain_lightning"}, // 45 - thundershowers
+  {day: "rain_snow",        night: "rain_snow"}, // 46 - snow showers
+  {day: "rain_lightning",   night: "rain_lightning"}  // 47 - isolated thundershowers
 ]);
