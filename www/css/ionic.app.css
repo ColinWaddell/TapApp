@@ -9742,6 +9742,7 @@ img.w_clothing {
 div.w_box {
   border-radius: 2px;
   display: inline-block;
+  padding: 0;
   position: relative;
   width: 300px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -9759,13 +9760,14 @@ div.forecast-taps-oan {
   width: 100%;
   text-align: center;
   letter-spacing: 2px;
-  padding: 10px 0; }
+  padding: 10px 0;
+  font-weight: bold; }
 
 .forecast-taps-aff .w_day {
-  border-bottom: 1px solid #fbdedb; }
+  background-color: #f29f97; }
 
 .forecast-taps-oan .w_day {
-  border-bottom: 1px solid white; }
+  background-color: #a9d1ec; }
 
 p.w_temp {
   display: block;
@@ -9790,11 +9792,16 @@ p.w_temp_low {
   text-align: center;
   padding: 10px 0 0; }
 
+h3.w_description {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  font-weight: lighter; }
+
 .forecast-taps-aff .w_description {
-  border-top: 1px solid #fbdedb; }
+  background-color: #fbdedb; }
 
 .forecast-taps-oan .w_description {
-  border-top: 1px solid white; }
+  background-color: #e7f2fa; }
 
 /* Search Box */
 .search-suggestions .item {
