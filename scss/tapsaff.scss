@@ -23,9 +23,9 @@ h3.taps-submessage{
 .taps-message.taps-oan { color: darken($positive, 10%); }
 
 .page-taps-oan{
-  background-color: lighten($positive, 40%);
+  @include linear-gradient(lighten($positive, 10%) 20%, lighten($positive, 40%) 100%);
 }
 
 .page-taps-aff{
-  background-color: lighten($assertive, 40%);
+  @include linear-gradient(lighten($assertive, 30%) 20%, lighten($assertive, 40%) 100%);
 }
