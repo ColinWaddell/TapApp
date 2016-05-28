@@ -1,7 +1,7 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('GeoCtrl', function($cordovaGeolocation, $ionicPopup) {
+.controller('GeoCtrl', function($scope, $cordovaGeolocation, $ionicPopup) {
 
   var posOptions = {timeout: 10000, enableHighAccuracy: false};
 

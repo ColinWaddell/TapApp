@@ -4,6 +4,7 @@
 /www/lib/angular
 /www/lib/angular*
 /www/lib/ionic-toast
+/www/lib/ngCordova
 node_modules/
 platforms/
 plugins/

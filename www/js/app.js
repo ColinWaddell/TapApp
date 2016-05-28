@@ -13,7 +13,8 @@ angular.module('app', [
   'app.services',
   'app.directives',
   'app.placenames',
-  'app.weatherIcons'
+  'app.weatherIcons',
+  'ngCordova'
 ])
 
 .run(function($ionicPlatform) {
