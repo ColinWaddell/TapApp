@@ -24,7 +24,7 @@ angular.module('app.controllers', [])
       return;
     }
 
-    var place = result.data.address.city || result.data.address.town || result.data.address.county;
+    var place = null || result.data.address.city || result.data.address.town || result.data.address.county;
     if(place===null){
       ionicToast.show(
         'Can\'t find your location', 'middle', false, 1500
@@ -32,7 +32,7 @@ angular.module('app.controllers', [])
       return;
     }
 
-    $state.go('tabsController.weather', {'location': city});
+    $state.go('tabsController.weather', {'location': place});
   }
 
   $scope.geoSearchFailure = function(){
