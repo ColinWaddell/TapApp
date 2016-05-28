@@ -25,6 +25,18 @@ angular.module('app.routes', [])
 )
 
 .constant(
+  'T_SCALES', [
+      {id: 'F', title:'Fahrenheit'},
+      {id: 'C', title:'Celsius'}
+])
+
+.constant(
+  'W_ICONS', [
+      {id: 'weather',  title:'Weather'},
+      {id: 'clothing', title:'Clothing'}
+])
+
+.constant(
   'SETTINGSDFTL',{
     tempScale: 'C',
     iconDefault: 'clothing'

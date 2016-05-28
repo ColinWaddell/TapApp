@@ -313,10 +313,16 @@ angular.module('app.controllers', [])
     $scope.settings = {};
   })
 
-.controller('settingsCtrl', function($scope, $window, Favorites, Settings) {
+.controller('settingsCtrl', function($scope, $window, Favorites, Settings, W_ICONS, T_SCALES) {
     $scope.delete_confim = false;
 
-    //$scope.settings = Settings.get();
+    Settings.get().then(function(settings){$scope.settings = settings;});
+    $scope.temperature_scales = T_SCALES;
+    $scope.default_icons = W_ICONS;
+
+    $scope.forecastIconChange = function(){
+      Settings.update('iconDefault', $scope.settings.iconDefault);
+    }
 
     $scope.tempScaleChange = function(){
       Settings.update('tempScale', $scope.settings.tempScale);

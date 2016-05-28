@@ -3,6 +3,29 @@
 
       <div class="list">
 
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Temperature
+          </div>
+          <select
+            ng-model="settings.tempScale"
+            ng-change="tempScaleChange();"
+            ng-options="scale.id as scale.title for scale in temperature_scales">
+          </select>
+        </label>
+
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Forecast
+          </div>
+          <select
+            ng-model="settings.iconDefault"
+            ng-change="forecastIconChange();"
+            ng-options="icon.id as icon.title for icon in default_icons">
+          </select>
+        </label>
+
         <div class="item item-button-right">
           Clear Favorites
           <button class="button button-positive" ng-click="delete_confirm = true">
@@ -26,17 +49,6 @@
             </div>
           </div>
         </div>
-
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Temperature
-          </div>
-          <select ng-model="settings.tempScale" ng-change="tempScaleChange();">
-            <option value="C">Celsius</option>
-            <option value="F">Fahrenheit</option>
-          </select>
-        </label>
-
 
     </ion-content>
 </ion-view>

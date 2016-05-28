@@ -151,11 +151,14 @@ angular.module('app.services', [])
 
     self.preloadSettingsDefaults = function(){
       DB.query("INSERT INTO settings (tempScale, iconDefault) VALUES (?,?)",
-        [SETTINGSDFTL.tempScale, SETTINGSDFTL.iconDefault]);
+        [SETTINGSDFTL.tempScale, SETTINGSDFTL.iconDefault])
+      .then(function(result){
+        console.log(result);
+      });;
     }
 
     self.get = function(){
-      return DB.query('SELECT * FROM settings WHERE id = 1')
+      return DB.query('SELECT * FROM settings')
       .then(function(result){
           return DB.fetch(result);
       });
@@ -163,7 +166,7 @@ angular.module('app.services', [])
 
     self.update = function(setting, value){
       return DB.query(
-        'UPDATE favorites SET '+setting+' = (?) WHERE id = 1', [value])
+        'UPDATE settings SET '+setting+' = (?)', [value])
         .then(function(result){
           console.log(result);
         });
