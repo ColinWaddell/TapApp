@@ -158,7 +158,7 @@ angular.module('app.controllers', [])
 .controller('weatherCtrl',
   function($scope, $stateParams, $http, $window,
            $ionicPopup, $ionicScrollDelegate, ionicToast,
-           Favorites, TAP_SERVER, WEATHER_CLOTHING) {
+           Favorites, Settings, TAP_SERVER, WEATHER_CLOTHING) {
 
     $scope.doRefresh = function(){
       $scope.grabWeatherData($scope.location);
@@ -310,7 +310,7 @@ angular.module('app.controllers', [])
     }
 
     /* THE CODE */
-    $scope.settings = {};
+    Settings.get().then(function(settings){$scope.settings = settings;});
   })
 
 .controller('settingsCtrl', function($scope, $window, Favorites, Settings, W_ICONS, T_SCALES) {
@@ -322,10 +322,12 @@ angular.module('app.controllers', [])
 
     $scope.forecastIconChange = function(){
       Settings.update('iconDefault', $scope.settings.iconDefault);
+      $window.location.reload(true);
     }
 
     $scope.tempScaleChange = function(){
       Settings.update('tempScale', $scope.settings.tempScale);
+      $window.location.reload(true);
     }
 
     $scope.ClearFavorites = function(){

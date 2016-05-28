@@ -189,12 +189,4 @@ angular.module('app.services', [])
 
     self.init();
     return self;
-})
-
-.factory('BlankFactory', [function(){
-
-}])
-
-.service('BlankService', [function(){
-
-}]);
+});

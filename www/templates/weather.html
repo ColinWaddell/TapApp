@@ -67,7 +67,7 @@
           </div>
           <div class="col col-33">
             <h3>{{weather.description}}</h3>
-            <h3>{{weather.temp_c}}&deg;C</h3>
+            <h3>{{settings.tempScale==="C" ? weather.temp_c+"&deg;C" : weather.temp_f+"&deg;F"}}</h3>
           </div>
         </div>
 
@@ -86,21 +86,21 @@
                     <div class="">
                       <div class="row">
                         <div class="col col-67">
-                          <div ng-hide="toggled">
+                          <div ng-hide="settings.iconDefault==='clothing' ? toggled : !toggled">
                             <img class="w_clothing"
                               ng-src="{{
                                 day.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :
                                 weatherToClothingSVG(day.code, day.temp_high_c)
                               }}"></img>
                           </div>
-                          <div ng-hide="!toggled">
+                          <div ng-hide="settings.iconDefault==='clothing' ? !toggled : toggled">
                             <img class="w_icon"
                               ng-src="{{weatherToIconSVG(day.code, true )}}"></img>
                           </div>
                         </div>
                         <div class="col col-33">
                           <p class="w_temp w_temp_high w_temp_padding">{{day.temp_high_c}}</p>
-                          <p class="w_temp w_temp_low">{{day.temp_low_c}}</p>
+                          <p class="w_temp w_temp_low">{{settings.tempScale==="C" ? weather.temp_c : weather.temp_f}}</p>
                         </div>
                     </div>
                     </div>
