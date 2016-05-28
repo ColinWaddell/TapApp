@@ -31,7 +31,7 @@
             <div class="col col-67">
               <p class="taps-message">taps</p>
             </div>
-            <div class="col col-33" ng-controller="forecastIcon">
+            <div class="col col-33">
                 <img class="w_icon"
                   ng-src="{{weatherToIconSVG(weather.code, weather.daytime)}}"></img>
             </div>
@@ -44,7 +44,7 @@
                  {{!weather.error ? weather.taps : weather.error}}
                </p>
             </div>
-            <div class="col col-33" ng-controller="forecastIcon">
+            <div class="col col-33">
               <img class="w_clothing"
                 ng-src="{{
                   weather.taps==='aff' ? 'img/symbols/clothing/tapsaff.svg' :

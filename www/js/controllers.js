@@ -1,55 +1,68 @@
 /*global angular */
 angular.module('app.controllers', [])
 
-.controller('GeoCtrl', function($scope, $cordovaGeolocation, $ionicPopup) {
+.controller('GeoCtrl', function($scope, $http, $cordovaGeolocation,
+                                $state, $ionicPopup, $ionicLoading)
+{
 
   var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
+  $scope.showLoading = function() {
+    $ionicLoading.show({
+      template: '<p>Searching...</p><ion-spinner></ion-spinner>'
+    });
+  };
+  $scope.hideLoading = function(){
+    $ionicLoading.hide();
+  };
+
+  $scope.geoSearchSucess = function(result){
+    if(result.data.error){
+      ionicToast.show(
+        'Can\'t find your location', 'middle', false, 1500
+      );
+      return;
+    }
+
+    city = result.data.address.city;
+    $state.go('tabsController.weather', {'location': city});
+  }
+
+  $scope.geoSearchFailure = function(){
+    ionicToast.show(
+      'Can\'t find your location', 'middle', false, 1500
+    );
+  }
+
   $scope.findMe = function fuction(){
+    $scope.showLoading();
     $cordovaGeolocation
       .getCurrentPosition(posOptions)
       .then(function (position) {
         var lat  = position.coords.latitude
-        var long = position.coords.longitude
-        var alertPopup = $ionicPopup.alert({
-          title: 'Lat/Lng',
-          template: 'lat:' + lat +' lng:' + lng,
-          okText: 'cool'
-        });
+        var lng = position.coords.longitude
+        var geourl = "https://nominatim.openstreetmap.org/reverse?format=json&lat="+lat+"&lon="+lng;
+
+        $http(
+          {
+            method: 'GET',
+            url: geourl
+          })
+          .then(
+            $scope.geoSearchSucess,
+            $scope.geoSearchFailure)
+          .finally(function() {
+            // Stop the ion-refresher from spinning
+            $scope.hideLoading();
+          });
       }, function(err) {
         var alertPopup = $ionicPopup.alert({
           title: 'Lat/Lng',
-          template: 'that didnt work',
-          okText: 'cool'
+          template: 'Can\'t find your location',
+          okText: 'Bugger'
         });
       });
-  }
-
-  var watchOptions = {
-    timeout : 3000,
-    enableHighAccuracy: false // may cause errors if true
   };
-
-  var watch = $cordovaGeolocation.watchPosition(watchOptions);
-  watch.then(
-    null,
-    function(err) {
-      // error
-    },
-    function(position) {
-      var lat  = position.coords.latitude
-      var long = position.coords.longitude
-  });
-
-
-  watch.clearWatch();
-  // OR
-  $cordovaGeolocation.clearWatch(watch)
-    .then(function(result) {
-      // success
-      }, function (error) {
-      // error
-    });
 })
 
 .controller('forecastIcon', function($scope, WEATHER_CLOTHING, WEATHER_ICON, TEMPERATURES){
@@ -122,7 +135,8 @@ angular.module('app.controllers', [])
   };
 
   $scope.popluateFavorites = function(favorites){
-    $scope.favorites = favorites;
+    $scope.favorites = {};
+    $scope.favorites.saved = favorites;
   };
 
   $scope.errorLoadingFavorites = function(){
@@ -293,7 +307,7 @@ angular.module('app.controllers', [])
     $scope.settings = {};
   })
 
-  .controller('settingsCtrl', function($scope, $window, Favorites, Settings) {
+.controller('settingsCtrl', function($scope, $window, Favorites, Settings) {
     $scope.delete_confim = false;
 
     //$scope.settings = Settings.get();

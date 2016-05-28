@@ -8,7 +8,8 @@
               my-enter="searchLocation(search.location)"
               ng-model="search.location"
               ng-change="searchFilter(search.location)"
-              placeholder="Search the UK...">
+              placeholder="Search the UK..."
+              class="location-search">
           </label>
           <button class="button button-small" ng-click="search.location = null">
             <i class="icon ion-close-round placeholder-icon"></i>
@@ -22,12 +23,12 @@
         </div>
 
         <div ng-hide="search.location.length">
-          <div class="item item-icon-right" ng-controller="GeoCtrl">
-            <p ng-click="findMe()">Current Location</p>
+          <div class="item item-icon-right" ng-controller="GeoCtrl" ng-click="findMe()">
+            <p>Current Location</p>
             <i class="icon placeholder-icon ion-pinpoint"></i>
           </div>
-          <div class="item item-icon-right" ng-repeat="fav in favorites">
-            <p ng-click="loadFavoriteById(fav.id)">{{fav.location}}</p>
+          <div class="item item-icon-right" ng-repeat="fav in favorites.saved" ng-click="loadFavoriteById(fav.id)">
+            <p>{{fav.location}}</p>
             <i class="icon placeholder-icon ion-ios-star"></i>
           </div>
         </div>

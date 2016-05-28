@@ -19,6 +19,9 @@ $dark:                            #444 !default;
 .tab-item {
   padding-top: 6px; }
 
+.item-input-wrapper {
+  background: transparent !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
