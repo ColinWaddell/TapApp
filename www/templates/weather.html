@@ -77,7 +77,7 @@
             <div ng-style="{'width' : '1500px'}">
               <div class="row">
                 <div class="col w_box {{weather.taps ? 'forecast-taps-'+weather.taps : ''}}" ng-repeat="(n, day) in weather.forecast | limitTo:7" ng-hide="$first">
-                  <div class="" ng-controller="forecastIcon" on-touch="forecastToggleIconHold(t)" on-release="forecastToggleIconRelease()">
+                  <div class="" ng-controller="forecastIcon" on-hold="forecastToggleIconHold()" on-release="forecastToggleIconRelease()">
                     <div class="">
                       <h3 class="w_day">
                         {{day.datetime | date:'EEEE'}}
@@ -122,7 +122,7 @@
             <i class="icon placeholder-icon"
                ng-class="settings.favorite ? 'ion-ios-star' : 'ion-ios-star-outline'">
             </i>
-            {{settings.favorite ? 'Saved' : 'Save to favorites'}}
+            {{settings.favorite ? 'Favorite' : 'Add to favorites'}}
           </ion-checkbox>
           <ion-checkbox ng-change="toggleNotification()" ng-show="settings.favorite" ng-model="settings.notify">
             <i class="icon placeholder-icon"

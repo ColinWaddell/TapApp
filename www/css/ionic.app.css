@@ -9824,7 +9824,7 @@ h2.taps-title {
 
 p.taps-message {
   text-align: left;
-  font-size: 8em;
+  font-size: 7.5em;
   color: #2C3E50;
   line-height: 1.1em;
   font-weight: 800;
@@ -9841,7 +9841,11 @@ h3.taps-submessage {
   color: #20638f; }
 
 .page-taps-oan {
-  background-color: #bedcf0; }
+  background: #409ad5;
+  background: -webkit-linear-gradient(-90deg, #409ad5 20%, #bedcf0 100%);
+  background: linear-gradient(180deg, #409ad5 20%, #bedcf0 100%); }
 
 .page-taps-aff {
-  background-color: #fdf3f2; }
+  background: #f8c9c4;
+  background: -webkit-linear-gradient(-90deg, #f8c9c4 20%, #fdf3f2 100%);
+  background: linear-gradient(180deg, #f8c9c4 20%, #fdf3f2 100%); }
