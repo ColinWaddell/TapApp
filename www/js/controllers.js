@@ -24,7 +24,14 @@ angular.module('app.controllers', [])
       return;
     }
 
-    city = result.data.address.city;
+    var place = result.data.address.city || result.data.address.town || result.data.address.county;
+    if(place===null){
+      ionicToast.show(
+        'Can\'t find your location', 'middle', false, 1500
+      );
+      return;
+    }
+
     $state.go('tabsController.weather', {'location': city});
   }
 
@@ -174,7 +181,6 @@ angular.module('app.controllers', [])
     }
 
     $scope.weatherLoadSuccess = function (res) {
-
       if(res.data.taps==="error"){
         if(res.data.place_error.length){
           ionicToast.show(

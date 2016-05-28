@@ -128,10 +128,10 @@ angular.module('app.services', [])
     self.getNames = function(name){
       if (name.length < 3) return [];
 
-      id = name.substring(0,3).toLowerCase();
+      var id = name.substring(0,3).toLowerCase();
       if(!PLACENAMES.hasOwnProperty(id)) return [];
 
-      places = PLACENAMES[id].filter(
+      var places = PLACENAMES[id].filter(
         function(placename){
           return placename
                    .toLowerCase()
